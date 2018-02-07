@@ -88,13 +88,32 @@ To our knowledge, there is no evidence that they are not meritocratic: no one's 
 
 ## 2. Implementation Details
 
-### 2.1 Cycle Phases
+### 2.1 Kairo's Initial Distribution
 
-### 2.2 Oraclize
+As of writing, we have not decided on Kairo's initial distribution scheme. There are two options that we're considering:
 
-### 2.3 EtherDelta
+1. Any user who deposits investment during the first investment cycle will receive Kairo proportional to the investment. Withdrawing investment will of course be disabled. This is the model currently implemented in the smart contracts.
+2. We will have a traditional ICO for Kairo.
 
-### 2.4 Restraints In The Fund
+The reasons for choosing the first scheme are:
+
+* It makes bootstrapping the Incentivized Meritocracy easier, since users aren't paying for the Kairo they get.
+* It allows us to attract testers for the pre-release versions that will be released on Mainnet by making pre-release Kairo and after-release Kairo compatible, and providing a more favorable conversion rate for the test versions. For example, if you get 1 Kairo for every Ether you deposit in the final release, you can get 2 Kairo for every Ether you deposit in the test versions.
+
+The reasons for choosing the second scheme are:
+
+* It provides us with the funding that we desperately need.
+* People are more familiar with ICOs.
+
+It is also possible to use a combination of the two schemes: use the first scheme for the final release, and have an ICO during development to obtain funding.
+
+### 2.2 Cycle Phases
+
+### 2.3 Oraclize
+
+### 2.4 EtherDelta
+
+### 2.5 Restraints In The Fund
 
 ## 3. Market Analysis
 
