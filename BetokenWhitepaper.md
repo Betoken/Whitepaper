@@ -6,7 +6,7 @@
 
 Betoken is a decentralized hedge fund built on the Ethereum blockchain that invests in ERC20 tokens. It automatically redistributes control over investment decisions to managers who make the most profitable investment proposals, whose collected wisdom is compiled into good investment decisions, using a unique decision making system we call "Incentivized Meritocracy". 
 
-The core ideas behind an Incentivized Meritocracy is that control over decisions is tokenized, that the control tokens are valuable, that good decisions are rewarded with control tokens proportional to both the quality and the quantity of their benefits, and that bad decisions receive penalties in control tokens proportional to both how bad of a decision they were and how much damage they caused.
+The core ideas behind Betoken's Incentivized Meritocracy is that control over decisions is tokenized, that the control tokens are valuable, that good decisions are rewarded with control tokens proportional to both the quality and the quantity of their benefits, and that bad decisions receive penalties in control tokens proportional to both how bad of a decision they were and how much damage they caused.
 
 Betoken is for everyone: everyone can join, everyone can invest, everyone can make decisions for the fund and be rewarded for making good ones, and everyone can rise to the top if they have the merit. Betoken is unstoppable: it is a completely decentralized application built on the censorship-resistant Ethereum blockchain. Betoken is transparent: all statistics and decisions are publically available, and all fees and clauses are written in immutable open-source smart contracts.
 
@@ -130,13 +130,38 @@ In a preliminary setup, the lengths of each phase are as follows:
 
 totaling 30 days.
 
-### 2.3 Oraclize
+### 2.3 Token Trading
 
-### 2.4 EtherDelta
+As of writing, Betoken uses EtherDelta, a decentralized ERC20 token exchange, to handle its token trading. When making orders, Betoken uses Oraclize to fetch the current market price of each token and set that as the price used in the corresponding order. However, since EtherDelta has been purchased by a dubious party and suffers a lack of credibility, Kyber Network is selected as a potential replacement.
 
-### 2.5 Restraints In The Fund
+#### 2.3.1 Oraclize
 
-### 2.6 Smart Contract Maintenance
+Oraclize in an oracle service that provides off-chain data to smart contracts. In Betoken, it is used in for fetching the current price of tokens, so that orders can be correctly made with appropriate prices. The inclusion to Oraclize poses two problems:
+
+* Currently, CryptoCompare is used as the source of token prices, and a problem inherent to the usage of off-chain price feeds is that the feeds can go down/be manipulated. This brings a new attack surface into existence.
+* Queries to Oraclize cost a small fee. In the current model, this is solved by setting aside the maximum possible fee from the fund's balance at the end of each cycle (the fees in the first cycle has to be paid manually).
+
+#### 2.3.2 EtherDelta
+
+EtherDelta is a decentralized token exchange that uses a traditional model, where users can make and take limit orders. Its overarching advantage is that it is currently the largest decentralized exchange with the most volume and trading pairs. However, apart from its declining credibility, its inclusion in Betoken introduces a host of other potential problems:
+
+* It's always possible that orders made by Betoken won't be picked up by takers.
+  * Maybe the token's price changed significantly after making the order.
+  * Maybe the price obtained from CryptoCompare was faulty or quite different from the price in EtherDelta. 
+  * Or maybe it's because the market is very sensitive to even small differences in order prices and it's inherently difficult to consistently pinpoint the price window. 
+* There's always a delay between making an order and the order being fulfilled, and after Betoken becomes a major market player it is possible for malicious actors to use this delay to their own benefit. For example, if the price of a token usually sees a small spike after Betoken invests in it, someone can easily frontrun Betoken's order and profit on the spike, since Betoken is completely transparent.
+
+This introduces a great deal of uncertainty to Betoken's operation, which is extremely undesirable.
+
+#### 2.3.3 Kyber Network
+
+### 2.4 Restraints In The Fund
+
+### 2.5 Smart Contract Maintenance
+
+#### 2.5.1 Upgrading Contracts
+
+#### 2.5.2 Handling Emergencies
 
 ## 3. Market Analysis
 
