@@ -64,6 +64,8 @@ Due to the above reasons, Betoken employs a cyclic design. However, the lack of 
 
 Suppose each cycle is 30 days long. If some user knows that token A's price will rise greatly on the 10th day of the current cycle and drop soon afterwards, there's no way for the fund to utilize this information and sell at the peak. If another user knows that token B's price will drop greatly on the 10th day of the current cycle and rise back soon afterwards, there's no way for the fund to buy the dip either. This means that the fund misses out on opportunities shorter-term than the specified cycles.
 
+In a cyclic model, there exists a dilemma between utilizing short-term opportunities and having consistent gains. To be able to bank on short-term price changes, the length of cycles needs to be short; to be able to have consistent gains resistant to temporary price extremities, the length of cycles needs to be long so that erratic changes are evened out over time. We think that relatively long cycles are good, because investors should focus on the long-term potential that a token and its related technology has, rather than only on the price fluctuations.
+
 //TODO: Add in more problems
 
 ### 1.4 Reasons Why Betoken's Model May Work
@@ -103,17 +105,38 @@ The reasons for choosing the first scheme are:
 The reasons for choosing the second scheme are:
 
 * It provides us with the funding that we desperately need.
-* People are more familiar with ICOs.
-
-It is also possible to use a combination of the two schemes: use the first scheme for the final release, and have an ICO during development to obtain funding.
+* People are more familiar with ICOs, so an ICO may have more traction.
 
 ### 2.2 Cycle Phases
+
+Each cycle is divided into 5 phases:
+
+* Deposit & Withdraw: When investors deposit and withdraw their funds.
+* Investing: When users stake Kairo to make investment decisions for the fund.
+  * Transition (Investing => Waiting): Stakes are taken from users who had Kairo and didn't stake anything, buy orders are made.
+* Waiting: When everyone waits and let the token prices change.
+  * Transition (Waiting => Ended): Sell orders are made.
+* Ended: When the invested tokens are sold and users wait for the sell orders to go through.
+  * Transition (Ended => Finalized): Kairo is redistributed according to proposal results, commission, developer fee, and Oraclize fee are paid, and funds are returned to investors' balances.
+* Finalized: A placeholder phase before the next cycle begins.
+
+In a preliminary setup, the lengths of each phase are as follows:
+
+* Deposit & Withdraw: 1 day
+* Investing: 1 day
+* Waiting: 27 days
+* Ended: 1 day
+* Finalized: no time
+
+totaling 30 days.
 
 ### 2.3 Oraclize
 
 ### 2.4 EtherDelta
 
 ### 2.5 Restraints In The Fund
+
+### 2.6 Smart Contract Maintenance
 
 ## 3. Market Analysis
 
