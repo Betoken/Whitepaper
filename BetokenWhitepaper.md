@@ -165,13 +165,46 @@ However, KyberNetwork is still an in-progress product, unlike EtherDelta which h
 
 We will decide on this matter based on how much progress KyberNetwork will make before we roll out Betoken's Mainnet Alpha.
 
-### 2.4 Restraints In The Fund
+### 2.4 Rules In The Fund
+
+Partly to ensure scalability and partly to prevent spamming attacks, there are certain rules in the fund's smart contract, which will be listed below. Note: most of the exact numbers used are only placeholders, and will likely be different in future releases.
+
+* Each member can **create** at most 2 investment proposals during each cycle. (No restrictions on staking in proposals.)
+* At most 20 investment proposals can be created in each cycle.
+* Each proposal can invest in only one token, and two proposals cannot invest in the same token.
+* When staking into a proposal, the size of the stake must be no less than 25% of one's Kairo balance.
+* If a user has Kairo and didn't stake anything in the current cycle, 25% of their Kairo balance will be staked equally into the opposing side of all proposals.
+* A user cannot stake into both sides of the same proposal.
+* If the number of supporters of a proposal reaches zero, the proposal will be removed from the list. No similar rule for the number of opposers.
 
 ### 2.5 Smart Contract Maintenance
 
 #### 2.5.1 Upgrading Contracts
 
+To upgrade the **BetokenFund** smart contract, the following steps will be taken:
+
+1. The old contract is paused before the Waiting phase of the current cycle, and all users withdraws their investments.
+2. The new contract is deployed.
+3. The list of participants is read from the old contract and transferred to the new contract.
+4. The addresses of subcontracts (**OraclizeHandler**, **ControlToken**) are sent to the new contract.
+5. The owner of the subcontracts is set to the new contract.
+6. The upgrade is now complete.
+
+The script to do this can be found in Betoken's GitHub repository.
+
+To upgrade subcontracts other than **ControlToken**, simply set the relevant address variable in **BetokenFund** to be the address of the new contract.
+
+The **ControlToken** contract is not expected to be upgraded, since it is just a simple ERC20 token with minor additions.
+
 #### 2.5.2 Handling Emergencies
+
+The **BetokenFund** contract inherits the **Pausable** contract from OpenZeppelin, so that it is possible to pause the normal operation of the fund when an emergency occurs, such as an attack or a market black swan event. When paused, an emergency withdraw function will be able to be called by users to withdraw all funds.
+
+One thing to note about the emergency withdraw function is that if the fund is paused when the fund is invested in tokens, things would get more complicated, since the tokens have to be sold before users can withdraw, and the amount they can withdraw would likely be different from the amount at the start of the cycle.
+
+#### 2.5.3 Contract Administrator
+
+The **BetokenFund** contract inherits the **Ownable** contract from OpenZeppilin, and the owner is given administrator rights. Calling the emergency functions, pausing and unpausing, calling the functions related to upgrading, and changing the fund's fee rates all require administrator rights. Initially, the owner is set to be an account owned by the Betoken team, so that Betoken may be smoothly bootstrapped; after Betoken has enough community support, it is possible to set up a DAO (Decentralized Autonomous Organization) contract as the owner of Betoken, so that Betoken is completely decentralized.
 
 ## 3. Market Analysis
 
