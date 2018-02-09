@@ -70,7 +70,7 @@ In a cyclic model, there exists a dilemma between utilizing short-term opportuni
 
 ### 1.4 Reasons Why Betoken's Model May Work
 
-Since Betoken is something unprecedented, we do not have evidence that its model will work as intended. A formal proof of Betoken's plausibility also seems unlikely, since economics is still a fledging scientific field and available economic theories don't have the kind of predictive power and mathematical accuracy that laws of physics have. Therefore, we can only give here several possible reasons for which Betoken will work as intended.
+Since Betoken is something unprecedented, we do not have evidence that its model will work as intended. A formal proof of Betoken's plausibility also seems unlikely, since it's quite difficult to accurately model actors' behaviors. Therefore, we can only give here several possible reasons for which Betoken will work as intended.
 
 #### 1.4.1 Better Than Direct Investment
 
@@ -132,7 +132,7 @@ totaling 30 days.
 
 ### 2.3 Token Trading
 
-As of writing, Betoken uses EtherDelta, a decentralized ERC20 token exchange, to handle its token trading. When making orders, Betoken uses Oraclize to fetch the current market price of each token and set that as the price used in the corresponding order. However, since EtherDelta has been purchased by a dubious party and suffers a lack of credibility, Kyber Network is selected as a potential replacement.
+As of writing, Betoken uses EtherDelta, a decentralized ERC20 token exchange, to handle its token trading. When making orders, Betoken uses Oraclize to fetch the current market price of each token and set that as the price used in the corresponding order. However, since EtherDelta has been purchased by a dubious party and suffers a lack of credibility, KyberNetwork is selected as a potential replacement.
 
 #### 2.3.1 Oraclize
 
@@ -143,17 +143,27 @@ Oraclize in an oracle service that provides off-chain data to smart contracts. I
 
 #### 2.3.2 EtherDelta
 
-EtherDelta is a decentralized token exchange that uses a traditional model, where users can make and take limit orders. Its overarching advantage is that it is currently the largest decentralized exchange with the most volume and trading pairs. However, apart from its declining credibility, its inclusion in Betoken introduces a host of other potential problems:
+EtherDelta is a decentralized token exchange that uses a traditional model, where users can make and take limit orders. Its overarching advantage is that it is currently the largest decentralized exchange with the most volume and trading pairs. However, apart from its declining credibility, its inclusion in Betoken introduces a host of other problems:
 
 * It's always possible that orders made by Betoken won't be picked up by takers.
+
   * Maybe the token's price changed significantly after making the order.
   * Maybe the price obtained from CryptoCompare was faulty or quite different from the price in EtherDelta. 
-  * Or maybe it's because the market is very sensitive to even small differences in order prices and it's inherently difficult to consistently pinpoint the price window. 
+  * Or maybe it's because the market is very sensitive to even small differences in order prices and it's inherently difficult to consistently pinpoint the appropriate price window. 
+
+  This introduces a great deal of uncertainty to Betoken's normal operation, which is extremely undesirable.
+
 * There's always a delay between making an order and the order being fulfilled, and after Betoken becomes a major market player it is possible for malicious actors to use this delay to their own benefit. For example, if the price of a token usually sees a small spike after Betoken invests in it, someone can easily frontrun Betoken's order and profit on the spike, since Betoken is completely transparent.
 
-This introduces a great deal of uncertainty to Betoken's operation, which is extremely undesirable.
+Therefore, we hope to transition to using KyberNetwork as soon as it becomes a viable option.
 
-#### 2.3.3 Kyber Network
+#### 2.3.3 KyberNetwork
+
+KyberNetwork is "an on-chain protocol which allows instant exchange and conversion of digital assets (e.g. crypto tokens) and cryptocurrencies (e.g. Ether, Bitcoin, ZCash) with high liquidity."[[source](https://kyber.network/assets/KyberNetworkWhitepaper.pdf)] It is a far superior option than EtherDelta, since it allows for instant token exchange which makes it able to avoid the problems mentioned in 2.3.2. Its inclusion would also eliminate the need for the "Ended" cycle phase, since we don't have to wait for orders to go through anymore, making the cycles more concise. Oraclize would also not be needed, since KyberNetwork provides its own on-chain price feed. Therefore, the inclusion of KyberNetwork will minimize the number of moving parts in Betoken's operation and significantly reduce Betoken's attack surface, reducing Betoken's running and maintenance costs and increasing its security.
+
+However, KyberNetwork is still an in-progress product, unlike EtherDelta which has been online for a long time, so it's still unclear whether we'd want to use KyberNetwork in our final release. Furthermore, it's likely that the types of tokens that KyberNetwork supports won't be able to match EtherDelta for quite some time, so using KyberNetwork would limit the types of tokens that Betoken can invest in. 
+
+We will decide on this matter based on how much progress KyberNetwork will make before we roll out Betoken's Mainnet Alpha.
 
 ### 2.4 Restraints In The Fund
 
