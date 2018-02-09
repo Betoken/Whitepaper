@@ -210,5 +210,15 @@ The **BetokenFund** contract inherits the **Ownable** contract from OpenZeppilin
 
 ### 3.1 Competitors
 
+There are, of course, the traditional hedge funds, who might one day decide to join in the crypto-trading parade. We're not really worried about them, since they mainly market to a loyal customer base consisting of people who resent anything new and risky, and that the average hedge funds have only single-digit ROIs (nothing to the crypto world). They're not stealing our customer base, and we're not stealing theirs. No competition there.
+
+There already exists crowdsourced hedge funds, such as Quantopian and Quantiacs, but they are not direct competitors either. Quantopian and Quantiacs are hedge funds where anyone can build trading algorithms and compete with each other. The best algorithms are selected to manage the funds, and their developers get a cut of profits. However, they are just as inaccessible as traditional hedge funds, and it does not invest in cryptocurrencies. Quantiacs does boast a 40% yearly return[[source](https://www.economist.com/news/finance-and-economics/21721946-amateur-coders-write-algorithms-compete-funds-new-sort-hedge-fund)], which reveals potential in crowdsourced hedge funds.
+
+The main competitors of Betoken are ICONOMI and Melon. ICONOMI and Melon are both platforms where users can build their own traditional-style hedge funds that invest in cryptocurrencies. They do appeal to the same customer base as Betoken, but the fund managers on their platforms each keep their own information and investment strategies, while Betoken is able to combine the skills and resources of its managers for the good of the fund.
+
+The intensity of competition that Betoken will face largely depends on the success of its Incentivized Meritocracy model.
+* If it is wildly successful, then great. None of the competitors mentioned above will be relevant. Copycats may emerge, but network effect and first mover advantage will keep Betoken at the top.
+* If it achieves similar returns as the aforementioned competitors, then Betoken will go head to head with ICONOMI and Melon, both of which will already have been launched for a long time when Betoken launches.  Competition will be fierce, but Betoken will hold its place as the only crowdsourced cryptocurrency hedge fund.
+
 ### 3.2 The Cryptocurrency Market
 
