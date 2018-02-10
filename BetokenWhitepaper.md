@@ -208,17 +208,58 @@ The **BetokenFund** contract inherits the **Ownable** contract from OpenZeppilin
 
 ## 3. Market Analysis
 
-### 3.1 Competitors
+### 3.1 Demand for Decentralized Cryptocurrency Hedge Funds
 
-There are, of course, the traditional hedge funds, who might one day decide to join in the crypto-trading parade. We're not really worried about them, since they mainly market to a loyal customer base consisting of people who resent anything new and risky, and that the average hedge funds have only single-digit ROIs (nothing to the crypto world). They're not stealing our customer base, and we're not stealing theirs. No competition there.
+#### 3.1.1 Demand from Investors 
 
-There already exists crowdsourced hedge funds, such as Quantopian and Quantiacs, but they are not direct competitors either. Quantopian and Quantiacs are hedge funds where anyone can build trading algorithms and compete with each other. The best algorithms are selected to manage the funds, and their developers get a cut of profits. However, they are just as inaccessible as traditional hedge funds, and it does not invest in cryptocurrencies. Quantiacs does boast a 40% yearly return[[source](https://www.economist.com/news/finance-and-economics/21721946-amateur-coders-write-algorithms-compete-funds-new-sort-hedge-fund)], which reveals potential in crowdsourced hedge funds.
+One of Betoken's main future competitors, ICONOMI, has seen rapid growth in user count and book value. Quoting ICONOMI's [Q4 2017 Financial Report](https://medium.com/iconominet/iconomi-financial-report-q4-2017-17da25349f3d):
 
-The main competitors of Betoken are ICONOMI and Melon. ICONOMI and Melon are both platforms where users can build their own traditional-style hedge funds that invest in cryptocurrencies. They do appeal to the same customer base as Betoken, but the fund managers on their platforms each keep their own information and investment strategies, while Betoken is able to combine the skills and resources of its managers for the good of the fund.
+> Our user base increased more than 50% in the last quarter, and **in January we added more than 10,000 new users**. Our book value increased to \$327 million USD, which is 173% more than in Q3. But even more important than book value is the revenue the platform is generating. **DAAs have** **generated over \$200,000** **in revenue in one quarter**, an increase of more than four times over Q3.
 
-The intensity of competition that Betoken will face largely depends on the success of its Incentivized Meritocracy model.
-* If it is wildly successful, then great. None of the competitors mentioned above will be relevant. Copycats may emerge, but network effect and first mover advantage will keep Betoken at the top.
-* If it achieves similar returns as the aforementioned competitors, then Betoken will go head to head with ICONOMI and Melon, both of which will already have been launched for a long time when Betoken launches.  Competition will be fierce, but Betoken will hold its place as the only crowdsourced cryptocurrency hedge fund.
+From this evidence, it is clear that the demand for decentralized cryptocurrency hedge funds is real and fast growing. 
 
-### 3.2 The Cryptocurrency Investment Market
+If we look at cryptocurrency hedge funds in general, the numbers are even more promising: according to Morgan Stanley, investors have put over **$2 billion** into hedge funds specialized in cryptocurrency investments in 2017, and 2018 will likely be bigger. [[source](http://www.businessinsider.com/morgan-stanley-on-financial-institutions-interest-in-bitcoin-2017-12)] The high demand for cryptocurrency hedge funds is truly undeniable.
 
+#### 3.1.2 Demand from Managers
+
+//TODO
+
+### 3.2 Competitors
+
+Betoken faces two types of competition: competition for investors, and competition for managers. We will discuss them below.
+
+#### 3.2.1 Competition for Investors
+
+Since Betoken invests solely in cryptocurrencies, our customer base is different from that of traditional hedge funds that invests in stocks and bonds. Specifically, our customer base will mainly consist of open-minded accredited investors and individual cryptocurrency investors. There are two types of competitors for this customer base:
+
+* Traditional hedge funds that have included cryptocurrencies as a new investment option. 
+* (Partly-)Decentralized cryptocurrency hedge fund platforms, such as ICONOMI and Melon. ICONOMI and Melon are both platforms where users can build their own traditional-style hedge funds that invest in cryptocurrencies. They do appeal to the same customer base as Betoken, but the fund managers on their platforms each keep their own information and investment strategies, whereas Betoken is able to combine the skills and resources of its managers for the good of the fund.
+
+To investors, only two metrics have significance: risk and ROI. 
+
+* Betoken is definitely going to be riskier than traditional hedge funds. Compared to other decentralized hedge funds, Betoken's risk is on the same order of magnitude.
+* Betoken's ROI mostly depends on the effectiveness of its Incentivized Meritocracy, which we cannot estimate at this point.
+
+Therefore, the intensity of competition that Betoken will face largely depends on its ROI.
+
+- If it is significantly better than anything else, then great. None of the competitors mentioned above will be relevant. Copycats may emerge, but network effect and first mover advantage will keep Betoken at the top.
+- If it is on the same level as the aforementioned competitors, then Betoken will go head to head with ICONOMI and Melon, both of which will already have been launched for a long time when Betoken launches. Competition will be fierce, but Betoken will hold its place as the only crowdsourced cryptocurrency hedge fund.
+
+#### 3.2.2 Competition for Managers
+
+There are several competitors is this area:
+
+* ICONOMI and Melon are platforms that allow managers to create their own hedge funds with customizable rules. There are reasons that may convince a manager to join either side, so there's no clear winner here.
+* Numerai is a hedge fund that uses an interesting auction system that lets data scientists compete to provide the best algorithms for predicting stock prices. The top rated algorithms will be used to make investment decisions for the hedge fund. [[source](https://numer.ai/whitepaper.pdf)] Numerai's model is inferior to Betoken's almost in every respect, because
+  * In Betoken, the commission managers get is proportional to the size of the fund's assets, while the same is not necessarily true in Numerai.
+  * The bets data scientists make in Numerai have binary results: either you lose all of your staked tokens or you lose none. In contrast, proposals in Betoken have much more granular results. This makes Betoken appeal better to risk-averse managers.
+  * Numerai's model rewards algorithms that fit past data best, rather than algorithms that will perform well in real investment decisions, so there's a gap between the model's optimization goal and the actual goal. Betoken's model, on the other hand, rewards managers that **actually make the best decisions/most profit**.
+  * There is a steep learning curve for joining Numerai as a manager, while all you have to do to start making decisions for Betoken is getting some Kairo.
+* Quantopian and Quantiacs are crowdsourced hedge funds using similar but slightly better models compared to Numerai:
+  * Users enter their algorithms in trading competitions, and the best algorithms are used for actual investing.
+  * There's no staking or betting involved; anyone can enter competitions at no cost.
+  * Algorithms don't have to use machine learning, so managers don't have to be data scientists.
+  * The algorithms come in the form of trading bots, so they're far more connected to actual trading than Numerai's machine learning algorithms.
+  * Developers of winning algorithms actually get a cut of all profits generated by their algorithms.
+
+Since one manager can make decisions for as many hedge funds/platforms they like, competition for managers probably won't be as fierce as that for investors. However, we do expect that Betoken will attract managers better than most of the abovementioned competitors, due to the low barrier of entry and higher-than-direct-investment ROIs.
