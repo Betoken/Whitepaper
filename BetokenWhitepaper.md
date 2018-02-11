@@ -81,7 +81,7 @@ Suppose each cycle is 30 days long. If some user knows that token A's price will
 
 In a cyclic model, there exists a dilemma between utilizing short-term opportunities and having consistent gains. To be able to bank on short-term price changes, the length of cycles needs to be short; to be able to have consistent gains resistant to temporary price extremities, the length of cycles needs to be long so that erratic changes are evened out over time. We think that relatively long cycles are good, because investors should focus on the long-term potential that a token and its related technology has, rather than only on the price fluctuations.
 
-//TODO: Add in more problems AND solutions :-) (Regarding the above problem, for e.g. user could to choose between different categories of fund - Betoken long term (1y), Betoken short term(14d), betoken mid-term (30d), etc.)
+//TODO: Add in more problems AND solutions :-) (Regarding the above problem, for e.g. user could choose between different categories of fund - Betoken long term (1y), Betoken short term(14d), betoken mid-term (30d), etc.)
 
 ### 1.4 Reasons Why Betoken's Model May Work
 
@@ -101,6 +101,12 @@ Betoken's Incentivized Meritocracy shares many similarities to markets of invest
 
 To our knowledge, there is no evidence that they are not meritocratic: no one's heard of a dumb and inexperienced investor besting market growth, and smart people (like those at Renaissance Technologies) have achieved amazing ROIs (71.8% annual on average! [[source](https://en.wikipedia.org/wiki/Renaissance_Technologies)]). Thus, we can expect that Betoken will also be meritocratic.
 
+#### 1.4.3 Onboarding beginner Investors
+Since the launch of our private alpha, some people told us that they don't have time to do their due diligence researching and accumulating knowledges about the best cryptoassets. It could be a good way for beginner investors to trust the Betoken's community to make investment decisions in their place.
+
+#### 1.4.4 Reducing the burden to invest in cryptoassets
+When you want to buy or sell crytoassets, you have to deal with two main problems: choosing the assets and dealing with exchanges platforms. Betoken will dramaticly reduce the time spent to buy and sell cryptoassets. Each investing and selling process are fully automated via our smart contracts. For the user, this feature offers him more time to research informations for their next investments or enjoying this free time with his friends and familly.
+
 //TODO: Add more reasons
 
 ## 2. Implementation Details
@@ -119,7 +125,7 @@ The reasons for choosing the first scheme are:
 
 The reasons for choosing the second scheme are:
 
-* It provides us with the funding that we desperately need.
+* It provides us with the funding that we need to make progress in the application and community development.
 * People are more familiar with ICOs, so an ICO may have more traction.
 
 ### 2.2 Cycle Phases
@@ -143,7 +149,7 @@ In a preliminary setup, the lengths of each phase are as follows:
 * Ended: 1 day
 * Finalized: no time
 
-totaling 30 days.
+Totaling 30 days.
 
 ### 2.3 Token Trading
 
