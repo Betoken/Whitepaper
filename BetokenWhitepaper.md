@@ -6,9 +6,17 @@
 
 Betoken is a decentralized hedge fund built on the Ethereum blockchain that invests in ERC20 tokens. It automatically redistributes control over investment decisions to managers who make the most profitable investment proposals. This collected wisdom is compiled into good investment decisions, using a unique decision making system we call "Incentivized Meritocracy".
 
-The core ideas behind Betoken's Incentivized Meritocracy is that control over decisions is tokenized, that the control tokens are valuable, that good decisions are rewarded with control tokens proportional to both the quality and the quantity of their benefits, and that bad decisions receive penalties in control tokens proportional to both how bad of a decision they were and how much damage they caused.
+The core ideas behind Betoken's Incentivized Meritocracy is as follow:
+* The control over decisions is tokenized.
+* The control tokens are valuable.
+* Good decisions are rewarded with control tokens proportional to both the quality and the quantity of their benefits.
+* Bad decisions receive penalties in control tokens proportional to both how bad of a decision they were and how much damage they caused.
 
-Betoken is for everyone: everyone can join, everyone can invest, everyone can make decisions for the fund and be rewarded for making good ones, and everyone can rise to the top if they have the merit. Betoken is unstoppable: it is a completely decentralized application built on the censorship-resistant Ethereum blockchain. Betoken is transparent: all statistics and decisions are publically available, and all fees and clauses are written in immutable open-source smart contracts.
+Betoken is for everyone: everyone can join, everyone can invest, everyone can make decisions for the fund and be rewarded for making good ones. And everyone can rise to the top if they have the merit.
+
+Betoken is unstoppable: it is a completely decentralized application built on the censorship-resistant Ethereum blockchain.
+
+Betoken is transparent: all statistics and decisions are publically available, and all fees and clauses are written in immutable open-source smart contracts.
 
 ## 1. The Betoken Model
 
@@ -29,10 +37,10 @@ Incentivized Meritocracies have never been successfully implemented before, sinc
 
 There are four central ideas behind Betoken's solution to Incentivized Meritocracy:
 
-1. Control is denoted using a custom ERC20 token that must be staked when making investments for the fund, and the amount of the stake is proportional to the amount of investment.
-2. The control tokens are valuable, in that holders of the token can expect income proportional to the amount of tokens they hold.
-3. Good investment decisions are rewarded with control tokens proportional to both the quality (ROI) and the quantity (profit / prevented loss) of the investment decision.
-4. Bad investment decisions receive penalties in control tokens proportional to both how far below 0 the ROIs were and how much money they lost.
+1. Control is denoted using Kairo (KRO) — Betoken custom ERC20 token — that must be staked when making investments for the fund, and the amount of the stake is proportional to the amount of investment.
+2. The control token KRO is valuable, in that holders of the token can expect income proportional to the amount of KRO they hold.
+3. Good investment decisions are rewarded with KRO proportional to both the quality (ROI) and the quantity (profit / prevented loss) of the investment decision.
+4. Bad investment decisions receive penalties in KRO proportional to both how far below 0 the ROIs were and how much money they lost.
 
 We provide below a description of how Betoken functions and details of Betoken's Incentivized Meritocracy.
 
@@ -62,7 +70,14 @@ At the end of every cycle, a certain proportion (20%) of total profits is set as
 
 #### 1.3.1 Cyclic Design
 
-The reason that Betoken functions in rigid cycles rather than a more asynchronous manner is that it make the model much, much simpler. Asynchronicity will introduce many problems that we don't necessarily know good answers to, such as: How do we ensure that users can't just hold on to their Kairos without ever making investment decisions? How can we prevent users from canceling their stakes in a proposal that starts crashing right before its profitability is  supposed to be evaluated? How do we evaluate the profitability of a proposal if anyone can stake in it at any moment before its evaluation? How do we handle investments if users can deposit and withdraw at any time? Each of the problems mentioned above has more than one potential solutions, thus many design choices will have to be made, often without a way of providing good justification. Further more, introducing additional complexity to a smart contract based system is often a bad idea, since computations and storage are expensive, and bugs are often deadly.
+The reason that Betoken functions in rigid cycles rather than a more asynchronous manner is that it make the model much, much simpler. Asynchronicity will introduce many problems that we don't necessarily know good answers to, such as:
+
+* How do we ensure that users can't just hold on to their Kairos without ever making investment decisions?
+* How can we prevent users from canceling their stakes in a proposal that starts crashing right before its profitability is supposed to be evaluated?
+* How do we evaluate the profitability of a proposal if anyone can stake in it at any moment before its evaluation?
+* How do we handle investments if users can deposit and withdraw at any time?
+
+Each of the problems mentioned above has more than one potential solutions, thus many design choices will have to be made, often without a way of providing good justification. Further more, introducing additional complexity to a smart contract based system is often a bad idea, since computations and storage are expensive, and bugs are often deadly.
 
 Due to the above reasons, Betoken employs a cyclic design. However, the lack of asynchronicity introduces a number of problems.
 
@@ -72,7 +87,7 @@ Suppose each cycle is 30 days long. If some user knows that token A's price will
 
 In a cyclic model, there exists a dilemma between utilizing short-term opportunities and having consistent gains. To be able to bank on short-term price changes, the length of cycles needs to be short; to be able to have consistent gains resistant to temporary price extremities, the length of cycles needs to be long so that erratic changes are evened out over time. We think that relatively long cycles are good, because investors should focus on the long-term potential that a token and its related technology has, rather than only on the price fluctuations.
 
-//TODO: Add in more problems
+//TODO: Add in more problems AND solutions :-) (Regarding the above problem, for e.g. user could choose between different categories of fund - Betoken long term (1y), Betoken short term(14d), betoken mid-term (30d), etc.)
 
 ### 1.4 Reasons Why Betoken's Model May Work
 
@@ -92,6 +107,12 @@ Betoken's Incentivized Meritocracy shares many similarities to markets of invest
 
 To our knowledge, there is no evidence that they are not meritocratic: no one's heard of a dumb and inexperienced investor besting market growth, and smart people (like those at Renaissance Technologies) have achieved amazing ROIs (71.8% annual on average! [[source](https://en.wikipedia.org/wiki/Renaissance_Technologies)]). Thus, we can expect that Betoken will also be meritocratic.
 
+#### 1.4.3 Onboarding beginner Investors
+Since the launch of our private alpha, some people told us that they don't have time to do their due diligence researching and accumulating knowledges about the best cryptoassets. It could be a good way for beginner investors to trust the Betoken's community to make investment decisions in their place.
+
+#### 1.4.4 Reducing the burden to invest in cryptoassets
+When you want to buy or sell crytoassets, you have to deal with two main problems: choosing the assets and dealing with exchanges platforms. Betoken will dramaticly reduce the time spent to buy and sell cryptoassets. Each investing and selling process are fully automated via our smart contracts. For the user, this feature offers him more time to research informations for their next investments or enjoying this free time with his friends and familly.
+
 //TODO: Add more reasons
 
 ## 2. Implementation Details
@@ -110,7 +131,7 @@ The reasons for choosing the first scheme are:
 
 The reasons for choosing the second scheme are:
 
-* It provides us with the funding that we desperately need.
+* It provides us with the funding that we need to make progress in the application and community development.
 * People are more familiar with ICOs, so an ICO may have more traction.
 
 ### 2.2 Cycle Phases
