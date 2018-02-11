@@ -2,11 +2,13 @@
 
 ### Zebang (Zefram) Liu
 
+### Guillaume Palayer
+
 ## Introduction
 
 Betoken is a decentralized hedge fund built on the Ethereum blockchain that invests in ERC20 tokens. It automatically redistributes control over investment decisions to managers who make the most profitable investment proposals. This collected wisdom is compiled into good investment decisions, using a unique decision making system we call "Incentivized Meritocracy".
 
-The core ideas behind Betoken's Incentivized Meritocracy is as follow:
+The core ideas behind Betoken's Incentivized Meritocracy is as follows:
 * The control over decisions is tokenized.
 * The control tokens are valuable.
 * Good decisions are rewarded with control tokens proportional to both the quality and the quantity of their benefits.
@@ -37,7 +39,7 @@ Incentivized Meritocracies have never been successfully implemented before, sinc
 
 There are four central ideas behind Betoken's solution to Incentivized Meritocracy:
 
-1. Control is denoted using Kairo (KRO) — Betoken custom ERC20 token — that must be staked when making investments for the fund, and the amount of the stake is proportional to the amount of investment.
+1. Control is denoted using Kairo (KRO) — Betoken's custom ERC20 token — that must be staked when making investments for the fund, and the amount of the stake is proportional to the amount of investment.
 2. The control token KRO is valuable, in that holders of the token can expect income proportional to the amount of KRO they hold.
 3. Good investment decisions are rewarded with KRO proportional to both the quality (ROI) and the quantity (profit / prevented loss) of the investment decision.
 4. Bad investment decisions receive penalties in KRO proportional to both how far below 0 the ROIs were and how much money they lost.
@@ -54,13 +56,9 @@ After a certain time has passed, any changes to proposals and stakes are no long
 
 - $investmentAmount = totalFunds \times \frac{proposalStake}{totalProposalStakeInThisCycle}$
 
-<<<<<<< HEAD
 where $totalProposalStakeInThisCycle$ is the sum of all Kairo staked in support of all investment proposals during the current cycle. The reason $totalKairoSupply$ is not used as the denominator is that since it is unlikely that users would stake a large proportion of their Kairo, only a small fraction of the fund's assets would be invested every cycle, which will make the fund unprofitable. 
 
 If you have Kairo and didn't stake anything during the staking period, a certain proportion of your Kairo will be taken away from you and be equally staked in opposition to all proposals. This measure is for preventing Kairo-hording, so that the fund's meritocratic nature is maintained.
-=======
-where $totalProposalStakeInThisCycle$ is the sum of all Kairo staked in support of all investment proposals during the current cycle. The reason $totalKairoSupply$ is not used as the denominator is that since it is unlikely that users would stake a large proportion of their Kairo, only a small fraction of the fund's assets would be invested every cycle, which will make the fund unprofitable. To prevent that, if you have Kairo and didn't stake anything during the staking period, a certain proportion of your Kairo will be taken away from you and be equally staked in opposition to all proposals.
->>>>>>> 1a024d3dcd785d35c4c6122d14a726d2d52a0f84
 
 After waiting for a certain time (ex. 30 days), the fund sells all tokens it invested in at the current market price. After the sell process is finished, the fund automatically determines how profitable each investment proposal was and redistributes Kairo based on the results. The amount of Kairos a user gets back for each proposal is $userStake \times (1 + ROIofProposal)$ if they supported it, and $userStake \times (1 - ROIofProposal)$ if they went against it, so if a proposal had a 20% ROI, everyone on the supporting side gets 20% more Kairos back, and everyone on the opposing side loses 20% of their stake.
 
@@ -107,11 +105,13 @@ Betoken's Incentivized Meritocracy shares many similarities to markets of invest
 
 To our knowledge, there is no evidence that they are not meritocratic: no one's heard of a dumb and inexperienced investor besting market growth, and smart people (like those at Renaissance Technologies) have achieved amazing ROIs (71.8% annual on average! [[source](https://en.wikipedia.org/wiki/Renaissance_Technologies)]). Thus, we can expect that Betoken will also be meritocratic.
 
-#### 1.4.3 Onboarding beginner Investors
-Since the launch of our private alpha, some people told us that they don't have time to do their due diligence researching and accumulating knowledges about the best cryptoassets. It could be a good way for beginner investors to trust the Betoken's community to make investment decisions in their place.
+#### 1.4.3 Friendly to Beginner Managers
+Since the launch of our Testnet Alpha, some people have told us that they haven't had time before to do their due diligence researching and accumulating knowledge about the best crypto-assets, but want to get better at it. Betoken offers beginner managers a safe environment to grow, since they can first observe how veteran managers make investments and let the community handle the fund's money, before dipping their toes into making decisions for an already full-fledged hedge fund. 
 
-#### 1.4.4 Reducing the burden to invest in cryptoassets
-When you want to buy or sell crytoassets, you have to deal with two main problems: choosing the assets and dealing with exchanges platforms. Betoken will dramaticly reduce the time spent to buy and sell cryptoassets. Each investing and selling process are fully automated via our smart contracts. For the user, this feature offers him more time to research informations for their next investments or enjoying this free time with his friends and familly.
+Compared to ICONOMI and Melon, where you have to bootstrap a new hedge fund  completely on your own, Betoken is much more beginner-friendly. It's the difference between getting a job at a well-established company and starting your own company.
+
+#### 1.4.4 Automated Investment Process
+When you want to buy or sell crypto-assets, you usually have to deal with exchange platforms. Betoken dramatically reduce the time users spend on the buying and selling process, since they are fully automated via our smart contracts. This feature gives users more time to conduct research for their future investments or to enjoy spending time with their friends and family.
 
 //TODO: Add more reasons
 
