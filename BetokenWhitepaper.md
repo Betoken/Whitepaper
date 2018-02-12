@@ -8,7 +8,7 @@
 
 Betoken is a decentralized hedge fund built on the Ethereum blockchain that invests in ERC20 tokens. It automatically redistributes control over investment decisions to managers who make the most profitable investment proposals. This collected wisdom is compiled into good investment decisions, using a unique decision making system we call "Incentivized Meritocracy".
 
-The core ideas behind Betoken's Incentivized Meritocracy is as follows:
+The core ideas behind Betoken's Incentivized Meritocracy are as follows:
 * The control over decisions is tokenized.
 * The control tokens are valuable.
 * Good decisions are rewarded with control tokens proportional to both the quality and the quantity of their benefits.
