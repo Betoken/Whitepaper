@@ -58,7 +58,7 @@ After a certain time has passed, any changes to proposals and stakes are no long
 
 where $totalProposalStakeInThisCycle$ is the sum of all Kairo staked in support of all investment proposals during the current cycle. The reason $totalKairoSupply$ is not used as the denominator is that since it is unlikely that users would stake a large proportion of their Kairo, only a small fraction of the fund's assets would be invested every cycle, which will make the fund unprofitable. 
 
-If you have Kairo and didn't stake anything during the staking period, a certain proportion of your Kairo will be taken away from you and be equally staked in opposition to all proposals. This measure is for preventing Kairo-hording, so that the fund's meritocratic nature is maintained.
+If you have Kairo and didn't stake anything during the staking period, a certain proportion of your Kairo will be burnt. This measure is for preventing Kairo-hording, so that the fund's meritocratic nature is maintained.
 
 After waiting for a certain time (ex. 30 days), the fund sells all tokens it invested in at the current market price. After the sell process is finished, the fund automatically determines how profitable each investment proposal was and redistributes Kairo based on the results. The amount of Kairos a user gets back for each proposal is $userStake \times (1 + ROIofProposal)$ if they supported it, and $userStake \times (1 - ROIofProposal)$ if they went against it, so if a proposal had a 20% ROI, everyone on the supporting side gets 20% more Kairos back, and everyone on the opposing side loses 20% of their stake.
 
