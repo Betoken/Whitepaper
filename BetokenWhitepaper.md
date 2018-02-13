@@ -200,7 +200,7 @@ Partly to ensure scalability and partly to prevent spamming attacks, there are c
 * At most 20 investment proposals can be created in each cycle.
 * Each proposal can invest in only one token, and two proposals cannot invest in the same token.
 * When staking into a proposal, the size of the stake must be no less than 25% of one's Kairo balance.
-* If a user has Kairo and didn't stake anything in the current cycle, 25% of their Kairo balance will be staked equally into the opposing side of all proposals.
+* If a user has Kairo and didn't stake anything in the current cycle, 25% of their Kairo balance will be burnt.
 * A user cannot stake into both sides of the same proposal.
 * If the number of supporters of a proposal reaches zero, the proposal will be removed from the list. No similar rule for the number of opposers.
 
@@ -232,6 +232,28 @@ One thing to note about the emergency withdraw function is that if the fund is p
 #### 2.5.3 Contract Administrator
 
 The **BetokenFund** contract inherits the **Ownable** contract from OpenZeppilin, and the owner is given administrator rights. Calling the emergency functions, pausing and unpausing, calling the functions related to upgrading, and changing the fund's fee rates all require administrator rights. Initially, the owner is set to be an account owned by the Betoken team, so that Betoken may be smoothly bootstrapped; after Betoken has enough community support, it is possible to set up a DAO (Decentralized Autonomous Organization) contract as the owner of Betoken, so that Betoken is completely decentralized.
+
+### 2.6 Governance
+
+As we mentioned in 2.5.3, the control over Betoken's smart contracts will initially be held by our team, until the Betoken community is large enough to sustain itself, after which a DAO will be set up as the contracts' owner. We are still considering different options for how the DAO will operate, and will list them out below.
+
+#### 2.6.1 Votes
+
+There are two options for what to use as votes in the DAO: one's Kairo balance and one's Ether deposit balance. Both of them are viable, since the interests of Kairo holders and investors of the fund are all aligned with the interests of the entire fund. However, the two choices do have subtle differences.
+
+##### Reasons to choose Kairo
+
+* Using Kairo as votes would add additional value to Kairo tokens, benefiting the Incentivized Meritocracy.
+* Kairo holders are likely more involved in the fund's operations than investors, which means they would know better about what's best for the fund.
+
+##### Reasons to choose Ether deposit balance
+
+* It makes sense to distribute power based on the stake one has in the fund. If someone has invested a lot in Betoken, they would expect to have a big say in administrative decisions.
+* More secure to attacks. Even though extremely unlikely, it is possible for an attacker to spread FUD (Fear, Uncertainty, Doubt) so well that the price of Kairo drops significantly, buy in tons of Kairo, and take over the fund. The same is more difficult to accomplish with Ether: if you cause a lot of people to withdraw everything from the fund, and then deposit a ton of Ether yourself, you would actually reassure investors that it's still safe and well to invest in Betoken, counteracting your attack.
+
+#### 2.6.2 Voting Scheme
+
+//TODO
 
 ## 3. Market Analysis
 
