@@ -251,9 +251,11 @@ There are two options for what to use as votes in the DAO: one's Kairo balance a
 * It makes sense to distribute power based on the stake one has in the fund. If someone has invested a lot in Betoken, they would expect to have a big say in administrative decisions.
 * More secure to attacks. Even though extremely unlikely, it is possible for an attacker to spread FUD (Fear, Uncertainty, Doubt) so well that the price of Kairo drops significantly, buy in tons of Kairo, and take over the fund. The same is more difficult to accomplish with Ether: if you cause a lot of people to withdraw everything from the fund, and then deposit a ton of Ether yourself, you would actually reassure investors that it's still safe and well to invest in Betoken, counteracting your attack.
 
-#### 2.6.2 Voting Scheme
+There is a third option where both Kairo and Ether are used as votes, which seems more reasonable than using either one individually, since both investors and managers will be represented in administrative decisions. This is the option we're considering to use.
 
-//TODO
+#### 2.6.2 Implementation
+
+We intend to use an established framework like Aragon to implement the DAO. 
 
 ## 3. Market Analysis
 
