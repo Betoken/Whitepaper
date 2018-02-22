@@ -31,7 +31,7 @@ An **Incentivized Meritocracy** is a system where
 
 The above definition is not rigorous, since "control" and "ability to make good decisions" are not clearly defined, but it provides a general idea of how an Incentivized Meritocracy should behave. To sum it up in one sentence: the best people are in charge, and everyone wants to be in charge. The first point is the desired result, and the second point is the means of achieving it.
 
-Having the people with the most merit in charge is clearly good for an organization as a whole. In a hedge fund like Betoken, having the people who are the best at making investments handle the fund's investments means that the ROI of the fund is going to be pretty good.
+Having the people with the most merit in charge is clearly good for an organization as a whole. In a hedge fund like Betoken, having the people who are the best at making investments handle the fund's investments means that the ROI (Return On Investment) of the fund is going to be of a high standard.
 
 Incentivized Meritocracies have never been successfully implemented before, since it is near impossible to have a centralized actor that can judge everyone impartially. However, newly-invented smart-contract-enabled blockchains such as Ethereum allow us to construct **decentralized** actors that can uphold unbreakable rules, making implementing an actual Incentivized Meritocracy possible. Betoken is the first decentralized application that incorporates an implementation of Incentivized Meritocracy.
 
@@ -56,7 +56,7 @@ After a certain time has passed, any changes to proposals and stakes are no long
 
 - $investmentAmount = totalFunds \times \frac{proposalStake}{totalProposalStakeInThisCycle}$
 
-where $totalProposalStakeInThisCycle$ is the sum of all Kairo staked in support of all investment proposals during the current cycle. The reason $totalKairoSupply$ is not used as the denominator is that since it is unlikely that users would stake a large proportion of their Kairo, only a small fraction of the fund's assets would be invested every cycle, which will make the fund unprofitable. 
+where $totalProposalStakeInThisCycle$ is the sum of all Kairo staked in support of all investment proposals during the current cycle. The reason $totalKairoSupply$ is not used as the denominator is that since it is unlikely that users would stake a large proportion of their Kairo, only a small fraction of the fund's assets would be invested every cycle, which will make the fund unprofitable.
 
 If you have Kairo and didn't stake anything during the staking period, a certain proportion of your Kairo will be burnt. This measure is for preventing Kairo-hording, so that the fund's meritocratic nature is maintained.
 
@@ -106,7 +106,7 @@ Betoken's Incentivized Meritocracy shares many similarities to markets of invest
 To our knowledge, there is no evidence that they are not meritocratic: no one's heard of a dumb and inexperienced investor besting market growth, and smart people (like those at Renaissance Technologies) have achieved amazing ROIs (71.8% annual on average! [[source](https://en.wikipedia.org/wiki/Renaissance_Technologies)]). Thus, we can expect that Betoken will also be meritocratic.
 
 #### 1.4.3 Friendly to Beginner Managers
-Since the launch of our Testnet Alpha, some people have told us that they haven't had time before to do their due diligence researching and accumulating knowledge about the best crypto-assets, but want to get better at it. Betoken offers beginner managers a safe environment to grow, since they can first observe how veteran managers make investments and let the community handle the fund's money, before dipping their toes into making decisions for an already full-fledged hedge fund. 
+Since the launch of our Testnet Alpha, some people have told us that they haven't had time before to do their due diligence researching and accumulating knowledge about the best crypto-assets, but want to get better at it. Betoken offers beginner managers a safe environment to grow, since they can first observe how veteran managers make investments and let the community handle the fund's money, before dipping their toes into making decisions for an already full-fledged hedge fund.
 
 Compared to ICONOMI and Melon, where you have to bootstrap a new hedge fund  completely on your own, Betoken is much more beginner-friendly. It's the difference between getting a job at a well-established company and starting your own company.
 
@@ -255,7 +255,7 @@ There is a third option where both Kairo and Ether are used as votes, which seem
 
 #### 2.6.2 Implementation
 
-We intend to use an established framework like Aragon to implement the DAO. 
+We intend to use an established framework like Aragon to implement the DAO.
 
 ## 3. Market Analysis
 
