@@ -166,7 +166,7 @@ At Betoken, we believe that the 2/20 ratio and lockups will fall out of favor. I
 
 Betoken’ll charge only a 1% fee on the fund assets at the end of each investment cycle.
 
-#### 1.3.6 Incentivized a strong managers community
+#### 1.3.6 Incentivizing a strong managers community
 A lack of competitive distinction, fundraising ability  —  and necessary investing acumen  —  will lead to massive amounts of consolidation and, of course, outright failure. On the consolidation side, funds who shortfall their raises will begin pairing up with each other. Failures will take the shape of zombie-funds, left behind by fund managers who become disinterested and move on to other projects.
 
 Betoken aims to acquire a vast users base by partnering with the best managers in the industry and be the best alternative to single managed crypto fund by leveraging a incentivized meritocracy approach.
@@ -213,8 +213,6 @@ Due to the above reasons, Betoken employs a cyclic design. However, the lack of 
 Suppose each cycle is 30 days long. If some user knows that token A's price will rise greatly on the 10th day of the current cycle and drop soon afterwards, there's no way for the fund to utilize this information and sell at the peak. If another user knows that token B's price will drop greatly on the 10th day of the current cycle and rise back soon afterwards, there's no way for the fund to buy the dip either. This means that the fund misses out on opportunities shorter-term than the specified cycles.
 
 In a cyclic model, there exists a dilemma between utilizing short-term opportunities and having consistent gains. To be able to bank on short-term price changes, the length of cycles needs to be short; to be able to have consistent gains resistant to temporary price extremities, the length of cycles needs to be long so that erratic changes are evened out over time. We think that relatively long cycles are good, because investors should focus on the long-term potential that a token and its related technology has, rather than only on the price fluctuations.
-
-//TODO: Add in more problems AND solutions :-) (Regarding the above problem, for e.g. user could choose between different categories of fund - Betoken long term (1y), Betoken short term(14d), betoken mid-term (30d), etc.).
 
 #### 1.4.2 The existing regulatory framework
 
@@ -452,9 +450,10 @@ The road map of Betoken includes several phases.
 
 ### Feb-March 2018
 * UX improvements
+* Further smart contract development
 * Contract audit & testing
 * Incentive model analysis & adjustments
-* Customer research
+* Customer research & community outreach
 
 ### April 2018
 * Whitepaper
