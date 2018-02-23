@@ -68,7 +68,7 @@ At the end of every cycle, a certain proportion (20%) of total profits is set as
 
 #### 1.3.1 Cyclic Design
 
-The reason that Betoken functions in rigid cycles rather than a more asynchronous manner is that it make the model much, much simpler. Asynchronicity will introduce many problems that we don't necessarily know good answers to, such as:
+The reason that Betoken functions in rigid cycles rather than a more asynchronous manner is that it makes the model much, much simpler. Asynchronicity will introduce many problems that we don't necessarily know good answers to, such as:
 
 * How do we ensure that users can't just hold on to their Kairos without ever making investment decisions?
 * How can we prevent users from canceling their stakes in a proposal that starts crashing right before its profitability is supposed to be evaluated?
