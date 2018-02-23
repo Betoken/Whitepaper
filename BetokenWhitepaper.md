@@ -3,9 +3,10 @@
 A decentralized hedge fund built on the Ethereum blockchain.
 
 ## Authors
-Zebang (Zefram) Liu, Guillaume Palayer
-hello@betoken.fund
-(v0.2, updated on 23 February, 2018)
+
+* Zebang (Zefram) Liu, Guillaume Palayer.
+* Contact: hello@betoken.fund
+* V0.2, updated on 23 February, 2018.
 
 ## Abstract
 Betoken is a decentralized hedge fund actively managed by the wisdom of the crowds. Betoken aims to change the crypto fund industry by lowering operational costs and time spent investing in cryptoassets for everyone in a transparent and meritocratic manner.
@@ -191,9 +192,6 @@ There is evidence that quants and data scientists are interested in participatin
 * According to Quantopian's [website](https://www.quantopian.com/about), over 700,000 algorithms have been submitted to their platform throughout its lifetime.
 * According to a Wired [article](https://www.wired.com/2016/12/7500-faceless-coders-paid-bitcoin-built-hedge-funds-brain/), over 7,500 data scientists joined Numerai's competitions in 2016.
 * The market cap for the ICONOMI token, which will be used for creating hedge funds on ICONOMI's platform [[source](https://iconomi.zendesk.com/hc/en-us/articles/115002851065-ICN-token)], is currently over $156 million USD. (Coinmarketcap, Feb 8 2018)
-
-#### 1.3.7 A massive influx of crypto investors & managers
-
 
 ### 1.4 Potential challenges
 
