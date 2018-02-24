@@ -1,78 +1,20 @@
 # Betoken Whitepaper Draft
 
-A decentralized hedge fund built on the Ethereum blockchain.
+A meritocratic hedge fund built on the Ethereum blockchain.
 
 ## Authors
 
-* Zebang (Zefram) Liu, Guillaume Palayer.
-* Contact: hello@betoken.fund
-* V0.2, updated on 23 February, 2018.
+Zebang (Zefram) Liu, Guillaume Palayer
 
-## Abstract
-Betoken is a decentralized hedge fund actively managed by the wisdom of the crowds. Betoken aims to change the crypto fund industry by lowering operational costs and time spent investing in cryptoassets for everyone in a transparent and meritocratic manner.
+Contact: hello@betoken.fund
 
-The best managers are always in control, and everyone is incentivized to be the best. We achieved this by using a meritocracy to redistribute tokenized control, the value of which is backed by the fund’s assets. Betoken is a dApp built on the Ethereum blockchain, so anyone can join the fund and make decisions.
-
-Besides serving as an fund, Betoken want to be part of this new wave of services by automating the whole buying, selling and reporting process. Facilitating the collection, consolidation and sharing of data for reporting, risk management and supervisory purposes is also one of the potential key benefits of Betoken.
-
-Betoken will focus on making investing in crypto as simple as deposit-and-profit, so that research and due diligence is done by managers in their stead. Betoken’s users just instantly gain exposure to a portfolio of cryptoassets.
-
-## Table​ ​of​ ​contents
-* Introduction
-* 1. The Betoken Model
-  - 1.1 Incentivized Meritocracy
-  - 1.2 Betoken's Solution
-  - 1.3 Reasons Why Betoken's Model May Work
-    - 1.3.1 Better Than Direct Investment
-    - 1.3.2 Analogous to Markets
-    - 1.3.3 Friendly to Beginner Managers
-    - 1.3.4 Reduction of operational costs
-    - 1.3.5 1% fee
-    - 1.3.6 Incentivized a strong managers community
-    - 1.3.7 Demand for Decentralized Cryptocurrency Hedge Funds
-      - 1.3.7.1 Demand form investors
-      - 1.3.7.2 Demand from managers
-  - 1.4 Potential challenges
-    - 1.4.1 Cyclic Design
-      - 1.4.1.1 Short Term Decisions
-    - 1.4.2 The existing regulatory framework
-    - 1.4.3 Approval, licensing and operating requirements
-    - 1.4.4 KYC and AML compliance
-    - 1.4.5 Tax burden
-    - 1.4.6 Operational risks
-    - 1.4.7 Interoperability
-* 2. Implementation Details
-  - 2.1 Kairo's Initial Distribution
-  - 2.2 Cycle Phases
-  - 2.3 Token Trading
-    - 2.3.1 Oraclize
-    - 2.3.2 EtherDelta
-    - 2.3.3 KyberNetwork
-  - 2.4 Rules In The Fund
-  - 2.5 Smart Contract Maintenance
-    - 2.5.1 Upgrading Contracts
-    - 2.5.2 Handling Emergencies
-    - 2.5.3 Contract Administrator
-  - 2.6 Governance
-    - 2.6.1 Votes
-      - 2.6.1.1 Reasons to choose Kairo
-      - 2.6.1.2 Reasons to choose Ether deposit balance
-    - 2.6.2 Implementation
-* 3. Market Analysis
-  - 3.1 Competitors
-    - 3.1.1 Competition for Investors
-    - 3.1.2 Competition for Managers
-      - 3.1.2.1 Pros for choosing Betoken as a manager
-      - 3.1.2.2 Cons for choosing Betoken as a manager
-* 4. Road map
-* 5. The team
-* 6. Acknowledgement
+V0.2, updated on February 24, 2018.
 
 ## Introduction
 
 Betoken is a decentralized hedge fund built on the Ethereum blockchain that invests in ERC20 tokens. It automatically redistributes control over investment decisions to managers who make the most profitable investment proposals. This collected wisdom is compiled into good investment decisions, using a unique decision making system we call "Incentivized Meritocracy".
 
-The core ideas behind Betoken's Incentivized Meritocracy are as follows:
+The core ideas behind Betoken's Incentivized Meritocracy are:
 
 * The control over decisions is tokenized.
 * The control tokens are valuable.
@@ -84,6 +26,10 @@ Betoken is for everyone: everyone can join, everyone can invest, everyone can ma
 Betoken is unstoppable: it is a completely decentralized application built on the censorship-resistant Ethereum blockchain.
 
 Betoken is transparent: all statistics and decisions are publically available, and all fees and clauses are written in immutable open-source smart contracts.
+
+Betoken will make investing in crypto-assets as simple as deposit-and-profit. Research and due diligence will be done by managers in the investors' stead, all with minimal need for trust between anyone.
+
+Besides serving as a fund, Betoken will facilitate the collection, consolidation and sharing of data for reporting, risk management and supervisory purposes.
 
 ## 1. The Betoken Model
 
@@ -150,48 +96,16 @@ To our knowledge, there is no evidence that they are not meritocratic: no one's 
 #### 1.3.3 Friendly to Beginner Managers
 Since the launch of our Testnet Alpha, some people have told us that they haven't had time before to do their due diligence researching and accumulating knowledge about the best crypto-assets, but want to get better at it. Betoken offers beginner managers a safe environment to grow, since they can first observe how veteran managers make investments and let the community handle the fund's money, before dipping their toes into making decisions for an already full-fledged hedge fund.
 
-Compared to ICONOMI and Melon, where you have to bootstrap a new hedge fund completely on your own, Betoken is much more beginner-friendly. It's the difference between getting a job at a well-established company and starting your own company.
+Compared to ICONOMI and Melon, where you have to bootstrap a new hedge fund completely on your own, Betoken is much more beginner-friendly. It's the difference between getting a job at a well-established company and starting your own company. This trait facilitates the inflow of new managers into the Incentivized Meritocracy, which is essential to keeping Betoken's model effective in making decisions.
 
-#### 1.3.4 Reduction of operational costs
-Crypto Fund Managers and individual investors will become ultra-aware and over-burdened by one major painful oversight: operations. The process of buying, selling and storing cryptocurrency is not for the light hearted. There’s managing exchanges and OTC partners, setting up digital wallets, ensuring a foolproof custody process and tracking activities.
+#### 1.3.4 Reduction of Operational Costs
+Crypto fund managers and individual investors will become ultra-aware and over-burdened by one major painful oversight: operations. The process of buying, selling and storing cryptocurrency is not for the light hearted. There’s managing exchanges and OTC partners, setting up digital wallets, ensuring a foolproof custody process and tracking activities.
 
 If you want a portfolio of 10 cryptoassets, it would take a couple of hours at least to just execute that portfolio. If you sign up for a centralized exchange on day 1, you have 100 ETH and want to put 10 ETH in 10 assets, that’s a three-hour process of signing up on exchanges, purchasing assets, registering your identity, actually getting your ethers, transferring your ethers, waiting for however long it takes for confirmation, then trading on a crypto-to-crypto order book, and then having to pull all those off the exchanges if you want to be secure.
 
 This requires focus, time, energy, patience and resources. Fantasies of patient, thoughtful investing will be obliterated by the grind of producing tax-tracking spreadsheets and digital wallet management. It’s a complete disaster from a user experience perspective. Betoken will focus on making investing in crypto as simple as deposit-and-profit, so that research and due diligence is done by managers in their stead. Betoken’s users just instantly gain exposure to a portfolio of cryptoassets. It’s way easier.
 
-We expect a wave of 3rd party resources to service the funds and individual investors that stay in business. We want to be part of this new wave of services by **automating the whole buying, selling and reporting process**. Facilitating the collection, consolidation and sharing of data for reporting, risk management and supervisory purposes is also one of the potential key benefits of Betoken.
-
-#### 1.3.5 1% fee
-At Betoken, we believe that the 2/20 ratio and lockups will fall out of favor. Investors will want the same democratization and flexibility that cryptocurrency itself promises. Someone sitting in the middle taking an outsized portion of returns, while holding money hostage, seems awfully.
-
-Betoken’ll charge only a 1% fee on the fund assets at the end of each investment cycle.
-
-#### 1.3.6 Incentivizing a strong managers community
-A lack of competitive distinction, fundraising ability  —  and necessary investing acumen  —  will lead to massive amounts of consolidation and, of course, outright failure. On the consolidation side, funds who shortfall their raises will begin pairing up with each other. Failures will take the shape of zombie-funds, left behind by fund managers who become disinterested and move on to other projects.
-
-Betoken aims to acquire a vast users base by partnering with the best managers in the industry and be the best alternative to single managed crypto fund by leveraging a incentivized meritocracy approach.
-
-### 1.3.7 Demand for Decentralized Cryptocurrency Hedge Funds
-
-#### 1.3.7.1 Demand from Investors
-
-One of Betoken's competitors, ICONOMI, has seen rapid growth in user count and book value. Quoting ICONOMI's [Q4 2017 Financial Report](https://medium.com/iconominet/iconomi-financial-report-q4-2017-17da25349f3d):
-
-> Our user base increased more than 50% in the last quarter, and **in January we added more than 10,000 new users**. Our book value increased to \$327 million USD, which is 173% more than in Q3. But even more important than book value is the revenue the platform is generating. **DAAs have** **generated over \$200,000** **in revenue in one quarter**, an increase of more than four times over Q3.
-
-From this evidence, it is clear that the demand for decentralized cryptocurrency hedge funds is real and fast growing.
-
-If we look at cryptocurrency hedge funds in general, the numbers are even more promising: according to [Morgan Stanley](http://www.businessinsider.com/morgan-stanley-on-financial-institutions-interest-in-bitcoin-2017-12), investors have put over **$2 billion USD** into hedge funds specialized in cryptocurrency investments in 2017, and 2018 will likely be bigger.
-
-The latest estimate of the number of crypto funds is 226 at the beginning of 2018, with $3.5 - 5 billion in assets under management [[source](https://next.autonomous.com/cryptofundlist/)]. 2018 could be on the same order of magnitude as 2017. And according to the [Eurekahedge Crypto-Currency Hedge Fund Index](http://www.eurekahedge.com/Indices/IndexView/Eurekahedge/682/Eurekahedge_Crypto_Currency_Hedge_Fund_Index), we’ve witnessed a 1,708.49% return for the 9 best crypto funds in 2017. With this kind of performance, we could witness a massive influx of new investors in the next months.
-
-#### 1.3.7.2 Demand from Managers
-
-There is evidence that quants and data scientists are interested in participating in hedge funds.
-
-* According to Quantopian's [website](https://www.quantopian.com/about), over 700,000 algorithms have been submitted to their platform throughout its lifetime.
-* According to a Wired [article](https://www.wired.com/2016/12/7500-faceless-coders-paid-bitcoin-built-hedge-funds-brain/), over 7,500 data scientists joined Numerai's competitions in 2016.
-* The market cap for the ICONOMI token, which will be used for creating hedge funds on ICONOMI's platform [[source](https://iconomi.zendesk.com/hc/en-us/articles/115002851065-ICN-token)], is currently over $156 million USD. (Coinmarketcap, Feb 8 2018)
+We expect a wave of third party resources to service the funds and individual investors that want to stay in business. We want to be part of this new wave of services by **automating the whole buying, selling and reporting process**. Facilitating the collection, consolidation and sharing of data for reporting, risk management and supervisory purposes is also one of the potential key benefits of Betoken.
 
 ### 1.4 Potential challenges
 
@@ -214,7 +128,7 @@ Suppose each cycle is 30 days long. If some user knows that token A's price will
 
 In a cyclic model, there exists a dilemma between utilizing short-term opportunities and having consistent gains. To be able to bank on short-term price changes, the length of cycles needs to be short; to be able to have consistent gains resistant to temporary price extremities, the length of cycles needs to be long so that erratic changes are evened out over time. We think that relatively long cycles are good, because investors should focus on the long-term potential that a token and its related technology has, rather than only on the price fluctuations.
 
-#### 1.4.2 The existing regulatory framework
+#### 1.4.2 The Existing Regulatory Framework
 
 Existing regulations do not provide an appropriate framework to existing and future blockchain projects and should not be applied to those projects as-is.
 
@@ -224,16 +138,16 @@ Betoken aims to evolve quickly if the framework and rules are updated by the reg
 
 More details about the constraints of applying a blockchain technology to finance can be found here: https://www.esma.europa.eu/sites/default/files/library/dlt_report_-_esma50-1121423017-285.pdf.
 
-#### 1.4.3 Approval, licensing and operating requirements
+#### 1.4.3 Approval, Licensing and Operating Requirements
 
-Betoken could need to get an approval and licensing from a national regulator, according to specific requirements in terms of operating rules, organisational structure, and human and material resources.
-Once authorized, Betoken could be subject to a certain number of organisational rules, market surveillance and conduct requirements, in order to ensure that the markets are fair, transparent and efficient places, and to provide customer protection.
+Betoken could need to get an approval and licensing from a national regulator, according to specific requirements in terms of operating rules, organizational structure, and human and material resources.
+Once authorized, Betoken could be subject to a certain number of organizational rules, market surveillance and conduct requirements, in order to ensure that the markets are fair, transparent and efficient places, and to provide customer protection.
 
-#### 1.4.4 KYC and AML compliance
+#### 1.4.4 KYC and AML Compliance
 
 On the question of fraudulent activities and AML (Anti-Money Laundering), a robust governance would ensure that only trustworthy participants are accepted. In addition, the Ethereum network would allow for more transparency on transaction history and beneficial owners, which would enhance KYC (Know Your Customer) and help trace and prevent fraud.
 
-#### 1.4.5 Tax burden
+#### 1.4.5 Tax Burden
 
 Some challenges could also arise from the transnational nature of the blockchain. For example, a tax may apply on a given transaction depending on its place of execution. The law applicable to blockchain networks should be specified in advance to avoid conflicts.
 
@@ -371,12 +285,12 @@ As we mentioned in 2.5.3, the control over Betoken's smart contracts will initia
 
 There are two options for what to use as votes in the DAO: one's Kairo balance and one's Ether deposit balance. Both of them are viable, since the interests of Kairo holders and investors of the fund are all aligned with the interests of the entire fund. However, the two choices do have subtle differences.
 
-##### 2.6.1.1 Reasons to choose Kairo
+##### 2.6.1.1 Reasons to Choose Kairo
 
 * Using Kairo as votes would add additional value to Kairo tokens, benefiting the Incentivized Meritocracy.
 * Kairo holders are likely more involved in the fund's operations than investors, which means they would know better about what's best for the fund.
 
-##### 2.6.1.2 Reasons to choose Ether deposit balance
+##### 2.6.1.2 Reasons to Choose Ether Deposit Balance
 
 * It makes sense to distribute power based on the stake one has in the fund. If someone has invested a lot in Betoken, they would expect to have a big say in administrative decisions.
 * More secure to attacks. Even though extremely unlikely, it is possible for an attacker to spread FUD (Fear, Uncertainty, Doubt) so well that the price of Kairo drops significantly, buy in tons of Kairo, and take over the fund. The same is more difficult to accomplish with Ether: if you cause a lot of people to withdraw everything from the fund, and then deposit a ton of Ether yourself, you would actually reassure investors that it's still safe and well to invest in Betoken, counteracting your attack.
@@ -429,15 +343,37 @@ There are several competitors in this area:
 
 Since one manager can make decisions for as many hedge funds/platforms they like, competition for managers probably won't be as fierce as that for investors. However, we believe that Betoken will be the prime choice for the vast majority of managers. We list out below the pros and cons of joining Betoken from the perspective of managers.
 
-##### 3.1.2.1 Pros for choosing Betoken as a manager
+##### 3.1.2.1 Pros for Choosing Betoken as a Manager
 
 * Low barrier of entry. No need to learn a specific language, API, or type of algorithm, or even anything about programming; all you need to do is get some Kairo and start making decisions.
 * Higher returns. The ROI for making decisions in Betoken is even higher than that of directly investing into the tokens, and the commission you get is proportional to the fund's assets. No middleman taking away a large portion of your profits for no good reason.
 * Automation: Betoken'll provide an automation for the whole buying, selling and reporting process. See part 1.3.4 Reduction of operational costs.
 
-##### 3.1.2.2 Cons for choosing Betoken as a manager
+##### 3.1.2.2 Cons for Choosing Betoken as a Manager
 
 The parameters used in the fund, such as commission rates, cannot be changed by the will of a single manager, so if a manager wants full freedom in selecting such parameters alternatives like ICONOMI and Melon would be better.
+
+### 3.2 Demand for Decentralized Cryptocurrency Hedge Funds
+
+#### 3.2.1 Demand from Investors
+
+One of Betoken's competitors, ICONOMI, has seen rapid growth in user count and book value. Quoting ICONOMI's [Q4 2017 Financial Report](https://medium.com/iconominet/iconomi-financial-report-q4-2017-17da25349f3d):
+
+> Our user base increased more than 50% in the last quarter, and **in January we added more than 10,000 new users**. Our book value increased to \$327 million USD, which is 173% more than in Q3. But even more important than book value is the revenue the platform is generating. **DAAs have** **generated over \$200,000** **in revenue in one quarter**, an increase of more than four times over Q3.
+
+From this evidence, it is clear that the demand for decentralized cryptocurrency hedge funds is real and fast growing.
+
+If we look at cryptocurrency hedge funds in general, the numbers are even more promising: according to [Morgan Stanley](http://www.businessinsider.com/morgan-stanley-on-financial-institutions-interest-in-bitcoin-2017-12), investors have put over **$2 billion USD** into hedge funds specialized in cryptocurrency investments in 2017, and 2018 will likely be bigger.
+
+The latest estimate of the number of crypto funds is 226 at the beginning of 2018, with $3.5 - 5 billion in assets under management [[source](https://next.autonomous.com/cryptofundlist/)]. 2018 could be on the same order of magnitude as 2017. And according to the [Eurekahedge Crypto-Currency Hedge Fund Index](http://www.eurekahedge.com/Indices/IndexView/Eurekahedge/682/Eurekahedge_Crypto_Currency_Hedge_Fund_Index), we’ve witnessed a 1,708.49% return for the 9 best crypto funds in 2017. With this kind of performance, we could witness a massive influx of new investors in the next months.
+
+#### 3.2.2 Demand from Managers
+
+There is evidence that quants and data scientists are interested in participating in hedge funds.
+
+- According to Quantopian's [website](https://www.quantopian.com/about), over 700,000 algorithms have been submitted to their platform throughout its lifetime.
+- According to a Wired [article](https://www.wired.com/2016/12/7500-faceless-coders-paid-bitcoin-built-hedge-funds-brain/), over 7,500 data scientists joined Numerai's competitions in 2016.
+- The market cap for the ICONOMI token, which will be used for creating hedge funds on ICONOMI's platform [[source](https://iconomi.zendesk.com/hc/en-us/articles/115002851065-ICN-token)], is currently over $156 million USD. (Coinmarketcap, Feb 8 2018)
 
 ## 4. Road map
 
@@ -467,7 +403,7 @@ The road map of Betoken includes several phases.
 
 ### 5.1 Core members
 
-#### Zefram Lou
+#### Zebang (Zefram) Liu
 
 Zefram is the cofounder and lead developer of Betoken. He currently studies Computer Science at UC San Diego. He is passionate about crypto-economics and mechanism design.
 
@@ -475,7 +411,7 @@ Zefram is the cofounder and lead developer of Betoken. He currently studies Comp
 
 Owen is a Computer Science student at UC San Diego. He's interested in furthering the study of human decision-making as well as reducing potential harm from catastrophic risks.
 
-#### Surya
+#### Surya Krishnan
 
 Surya is the cofounder and incentive researcher of Betoken.
 
