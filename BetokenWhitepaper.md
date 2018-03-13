@@ -59,9 +59,15 @@ We provide below a description of how Betoken functions and details of Betoken's
 
 ---
 
-The Betoken fund runs in investment cycles, and at the start of each cycle there is a period of time where investors can deposit & withdraw their funds.
+The Betoken fund runs in investment cycles, and at the start of each cycle there is a period of time where investors can deposit & withdraw their funds. When a user deposits $X$ Ether, they are given some amount of *Betoken Shares*, a custom ERC20 token, the amount of which is determined by the following equation:
 
-After that, users can propose investments into ERC20 tokens by staking some Kairos — the name we use for control tokens. You can stake Kairo into proposals other users made,  which has the same effect as creating the proposal yourself. You can also stake Kairo on the opposing side of a proposal to bet on its failure. It doesn't have any effect on the investments being made but is important to keeping the Incentivized Meritocracy functional. There is a restriction where you must stake no less than a certain proportion of your Kairo balance when staking.
+* $shares = \frac{X}{totalFunds} \times totalShareSupply$
+
+When they withdraw $X$ Ether, they have to burn some of their shares, the amount of which is determined by the same equation. During the first cycle, when there's no money in the fund, we simply use:
+
+* $shares = constant \times X$
+
+During this period, users can also propose investments into ERC20 tokens by staking some Kairos — the name we use for control tokens. You can stake Kairo into proposals other users made,  which has the same effect as creating the proposal yourself. You can also stake Kairo on the opposing side of a proposal to bet on its failure. It doesn't have any effect on the investments being made but is important to keeping the Incentivized Meritocracy functional. There is a restriction where you must stake no less than a certain proportion of your Kairo balance when staking.
 
 After a certain time has passed, any changes to proposals and stakes are no longer allowed, and existing proposals are turned into actual investments using the equation
 
@@ -69,9 +75,7 @@ After a certain time has passed, any changes to proposals and stakes are no long
 
 where $totalProposalStakeInThisCycle$ is the sum of all Kairo staked in support of all investment proposals during the current cycle. The reason $totalKairoSupply$ is not used as the denominator is that since it is unlikely that users would stake a large proportion of their Kairo, only a small fraction of the fund's assets would be invested every cycle, which will make the fund unprofitable.
 
-If you have Kairo and didn't stake anything during the staking period, a certain proportion of your Kairo will be burnt. This measure is for preventing Kairo-holding, so that the fund's meritocratic nature is maintained.
-
-After waiting for a certain time (ex. 30 days), the fund sells all tokens it invested in at the current market price. After the sell process is finished, the fund automatically determines how profitable each investment proposal was and redistributes Kairo based on the results. The amount of Kairos a user gets back for each proposal is $userStake \times (1 + ROIofProposal)$ if they supported it, and $userStake \times (1 - ROIofProposal)$ if they went against it, so if a proposal had a 20% ROI, everyone on the supporting side gets 20% more Kairos back, and everyone on the opposing side loses 20% of their stake.
+After waiting for a certain time (ex. 30 days), the fund sells all tokens it invested in at the current market price. After the sell process is finished, the fund automatically determines how profitable each investment proposal was and redistributes Kairo based on the results. The amount of Kairos a user gets back for each proposal is $userStake \times (1 + ROIofProposal + inflationRate)$ if they supported it, and $userStake \times (1 - ROIofProposal + inflationRate) $ if they went against it, so if inflation is 5% and a proposal had a 20% ROI, everyone on the supporting side gets 25% more Kairos back, and everyone on the opposing side loses 15% of their stake. Inflation is introduced to prevent Kairo-holding and incentivize participation, so that the fund's meritocratic nature is maintained.
 
 At the end of every cycle, a certain proportion (20%) of total profits is set aside as commission and distributed among Kairo holders proportional to the amount they hold. A certain proportion of fund assets is also sent to Betoken's developers as a fee for using the platform.
 
@@ -182,69 +186,38 @@ The reasons for choosing the second scheme are:
 
 Each cycle is divided into 5 phases:
 
-* Deposit & Withdraw: When investors deposit and withdraw their funds.
-* Investing: When users stake Kairo to make investment decisions for the fund.
-  * Transition (Investing => Waiting): Stakes are taken from users who had Kairo and didn't stake anything, buy orders are made.
+* Change Making: When investors deposit and withdraw their funds, and  managers stake Kairo to make investment decisions for the fund.
 * Waiting: When everyone waits and let the token prices change.
-  * Transition (Waiting => Ended): Sell orders are made.
-* Ended: When the invested tokens are sold and users wait for the sell orders to go through.
-  * Transition (Ended => Finalized): Kairo is redistributed according to proposal results, commission, developer fee, and Oraclize fee are paid, and funds are returned to investors' balances.
-* Finalized: A placeholder phase before the next cycle begins.
+  * At the beginning users are expected to compete to call the "Buy Tokens" function for each proposal, and the  winning callers will be rewarded with Kairo. This is similar to [the Ethereum Alarm Clock.](http://www.ethereum-alarm-clock.com/)
+* Finalizing: When the invested tokens are sold and Kairo holders redeem their stakes + rewards/penalties from proposals they staked in.
+  * Users are expected to compete to call the "Sell Tokens" function for each proposal, and the  winning callers will be rewarded with Kairo.
+  * Managers are expected to make a function call to redeem Kairos for each proposal they staked in, after the proposal's tokens have been sold.
+* Finalized: When Kairo holders can redeem their commission. The Kairo smart contract is "paused" before the start of the next cycle (to prevent redeeming commission multiple times for the same tokens).
 
 In a preliminary setup, the lengths of each phase are as follows:
 
-* Deposit & Withdraw: 1 day
-* Investing: 1 day
-* Waiting: 27 days
-* Ended: 1 day
-* Finalized: no time
+* Change Making: 2 days
+* Waiting: 26 days
+* Finalizing: 1 day
+* Finalized: 1 day
 
 Totaling 30 days.
 
+For the functions that transitions the fund to the next phase, the successful caller can get a reward in Kairo. (still Ethereum Alarm Clock-like setup)
+
 ### 2.3 Token Trading
 
-As of writing, Betoken uses EtherDelta, a decentralized ERC20 token exchange, to handle its token trading. When making orders, Betoken uses Oraclize to fetch the current market price of each token and set that as the price used in the corresponding order. However, since EtherDelta has been purchased by a dubious party and suffers a lack of credibility, KyberNetwork is selected as a potential replacement.
+Betoken uses Kyber Network as the token trading platform for executing all of its investments.
 
-#### 2.3.1 Oraclize
-
-Oraclize in an oracle service that provides off-chain data to smart contracts. In Betoken, it is used in for fetching the current price of tokens, so that orders can be correctly made with appropriate prices. The inclusion to Oraclize poses two problems:
-
-* Currently, CryptoCompare is used as the source of token prices, and a problem inherent to the usage of off-chain price feeds is that the feeds can go down/be manipulated. This brings a new attack surface into existence.
-* Queries to Oraclize cost a small fee. In the current model, this is solved by setting aside the maximum possible fee from the fund's balance at the end of each cycle (the fees in the first cycle has to be paid manually).
-
-#### 2.3.2 EtherDelta
-
-EtherDelta is a decentralized token exchange that uses a traditional model, where users can make and take limit orders. Its overarching advantage is that it is currently the largest decentralized exchange with the most volume and trading pairs. However, apart from its declining credibility, its inclusion in Betoken introduces a host of other problems:
-
-* It's always possible that orders made by Betoken won't be picked up by takers.
-
-  * Maybe the token's price changed significantly after making the order.
-  * Maybe the price obtained from CryptoCompare was faulty or quite different from the price in EtherDelta.
-  * Or maybe it's because the market is very sensitive to even small differences in order prices and it's inherently difficult to consistently pinpoint the appropriate price window.
-
-  This introduces a great deal of uncertainty to Betoken's normal operation, which is extremely undesirable.
-
-* There's always a delay between making an order and the order being fulfilled, and after Betoken becomes a major market player it is possible for malicious actors to use this delay to their own benefit. For example, if the price of a token usually sees a small spike after Betoken invests in it, someone can easily frontrun Betoken's order and profit on the spike, since Betoken is completely transparent.
-
-Therefore, we hope to transition to using KyberNetwork as soon as it becomes a viable option.
-
-#### 2.3.3 KyberNetwork
-
-KyberNetwork is "an on-chain protocol which allows instant exchange and conversion of digital assets (e.g. crypto tokens) and cryptocurrencies (e.g. Ether, Bitcoin, ZCash) with high liquidity."[[source](https://kyber.network/assets/KyberNetworkWhitepaper.pdf)] It is a far superior option than EtherDelta, since it allows for instant token exchange which makes it able to avoid the problems mentioned in 2.3.2. Its inclusion would also eliminate the need for the "Ended" cycle phase, since we don't have to wait for orders to go through anymore, making the cycles more concise. Oraclize would also not be needed, since KyberNetwork provides its own on-chain price feed. Therefore, the inclusion of KyberNetwork will minimize the number of moving parts in Betoken's operation and significantly reduce Betoken's attack surface, reducing Betoken's running and maintenance costs and increasing its security.
-
-However, KyberNetwork is still an in-progress product, unlike EtherDelta which has been online for a long time, so it's still unclear whether we'd want to use KyberNetwork in our final release. Furthermore, it's likely that the types of tokens that KyberNetwork supports won't be able to match EtherDelta for quite some time, so using KyberNetwork would limit the types of tokens that Betoken can invest in.
-
-We will decide on this matter based on how much progress KyberNetwork will make before we roll out Betoken's Mainnet Alpha.
+KyberNetwork is "an on-chain protocol which allows instant exchange and conversion of digital assets (e.g. crypto tokens) and cryptocurrencies (e.g. Ether, Bitcoin, ZCash) with high liquidity."[[source](https://kyber.network/assets/KyberNetworkWhitepaper.pdf)] It is a far superior option than EtherDelta, since it allows for instant token exchange which makes it able to avoid the problems mentioned in 2.3.2. The inclusion of KyberNetwork can minimize the number of moving parts in Betoken's operation and significantly reduce Betoken's attack surface, reducing Betoken's running and maintenance costs and increasing its security.
 
 ### 2.4 Rules In The Fund
 
 Partly to ensure scalability and partly to prevent spamming attacks, there are certain rules in the fund's smart contract, which will be listed below. Note: most of the exact numbers used are only placeholders, and will likely be different in future releases.
 
-* Each member can **create** at most 2 investment proposals during each cycle. (No restrictions on staking in proposals.)
-* At most 20 investment proposals can be created in each cycle.
 * Each proposal can invest in only one token, and two proposals cannot invest in the same token.
 * When staking into a proposal, the size of the stake must be no less than 25% of one's Kairo balance.
-* If a user has Kairo and didn't stake anything in the current cycle, 25% of their Kairo balance will be burnt.
+* The inflation rate of Kairo is 25%.
 * A user cannot stake into both sides of the same proposal.
 * If the number of supporters of a proposal reaches zero, the proposal will be removed from the list. No similar rule for the number of opposers.
 
@@ -256,16 +229,10 @@ To upgrade the **BetokenFund** smart contract, the following steps will be taken
 
 1. The old contract is paused before the Waiting phase of the current cycle, and all users withdraws their investments.
 2. The new contract is deployed.
-3. The list of participants is read from the old contract and transferred to the new contract.
-4. The addresses of subcontracts (**OraclizeHandler**, **ControlToken**) are sent to the new contract.
-5. The owner of the subcontracts is set to the new contract.
-6. The upgrade is now complete.
+3. The owner of the subcontracts (**ControlToken**, **ShareToken**) is set to the new contract.
+4. The upgrade is now complete.
 
 The script to do this can be found in Betoken's GitHub repository.
-
-To upgrade subcontracts other than **ControlToken**, simply set the relevant address variable in **BetokenFund** to be the address of the new contract.
-
-The **ControlToken** contract is not expected to be upgraded, since it is just a simple ERC20 token with minor additions.
 
 #### 2.5.2 Handling Emergencies
 
@@ -283,23 +250,23 @@ As we mentioned in 2.5.3, the control over Betoken's smart contracts will initia
 
 #### 2.6.1 Votes
 
-There are two options for what to use as votes in the DAO: one's Kairo balance and one's Ether deposit balance. Both of them are viable, since the interests of Kairo holders and investors of the fund are all aligned with the interests of the entire fund. However, the two choices do have subtle differences.
+There are two options for what to use as votes in the DAO: one's Kairo balance and one's Betoken Shares balance. Both of them are viable, since the interests of Kairo holders and investors of the fund are all aligned with the interests of the entire fund. However, the two choices do have subtle differences.
 
 ##### 2.6.1.1 Reasons to Choose Kairo
 
 * Using Kairo as votes would add additional value to Kairo tokens, benefiting the Incentivized Meritocracy.
 * Kairo holders are likely more involved in the fund's operations than investors, which means they would know better about what's best for the fund.
 
-##### 2.6.1.2 Reasons to Choose Ether Deposit Balance
+##### 2.6.1.2 Reasons to Choose Betoken Shares
 
 * It makes sense to distribute power based on the stake one has in the fund. If someone has invested a lot in Betoken, they would expect to have a big say in administrative decisions.
 * More secure to attacks. Even though extremely unlikely, it is possible for an attacker to spread FUD (Fear, Uncertainty, Doubt) so well that the price of Kairo drops significantly, buy in tons of Kairo, and take over the fund. The same is more difficult to accomplish with Ether: if you cause a lot of people to withdraw everything from the fund, and then deposit a ton of Ether yourself, you would actually reassure investors that it's still safe and well to invest in Betoken, counteracting your attack.
 
-There is a third option where both Kairo and Ether are used as votes, which seems more reasonable than using either one individually, since both investors and managers will be represented in administrative decisions. This is the option we're considering to use.
+There is a third option where both Kairo and Betoken Shares are used as votes, which seems more reasonable than using either one individually, since both investors and managers will be represented in administrative decisions. This is the option we're considering to use.
 
 #### 2.6.2 Implementation
 
-We intend to use an established framework like Aragon to implement the DAO.
+We intend to use an established framework, such as Aragon, to implement the DAO.
 
 ## 3. Market Analysis
 
