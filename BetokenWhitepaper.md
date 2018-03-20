@@ -67,13 +67,11 @@ When they withdraw $X$ Ether, they have to burn some of their shares, the amount
 
 * $shares = constant \times X$
 
-During this period, users can also propose investments into ERC20 tokens by staking some Kairos — the name we use for control tokens. You can stake Kairo into proposals other users made,  which has the same effect as creating the proposal yourself. You can also stake Kairo on the opposing side of a proposal to bet on its failure. It doesn't have any effect on the investments being made but is important to keeping the Incentivized Meritocracy functional. There is a restriction where you must stake no less than a certain proportion of your Kairo balance when staking.
+During this period, users can also propose investments into ERC20 tokens by staking some Kairos — the name we use for control tokens. You will need to stake Kairos when you create an investment proposal. There is a restriction where you must stake no less than a certain proportion of your Kairo balance when staking.
 
 After a certain time has passed, any changes to proposals and stakes are no longer allowed, and existing proposals are turned into actual investments using the equation
 
-- $investmentAmount = totalFunds \times \frac{proposalStake}{totalProposalStakeInThisCycle}$
-
-where $totalProposalStakeInThisCycle$ is the sum of all Kairo staked in support of all investment proposals during the current cycle. The reason $totalKairoSupply$ is not used as the denominator is that since it is unlikely that users would stake a large proportion of their Kairo, only a small fraction of the fund's assets would be invested every cycle, which will make the fund unprofitable.
+- $investmentAmount = totalFunds \times \frac{proposalStake}{totalKairoSupply}$
 
 After waiting for a certain time (ex. 30 days), the fund sells all tokens it invested in at the current market price. After the sell process is finished, the fund automatically determines how profitable each investment proposal was and redistributes Kairo based on the results. The amount of Kairos a user gets back for each proposal is $userStake \times (1 + ROIofProposal + inflationRate)$ if they supported it, and $userStake \times (1 - ROIofProposal + inflationRate) $ if they went against it, so if inflation is 5% and a proposal had a 20% ROI, everyone on the supporting side gets 25% more Kairos back, and everyone on the opposing side loses 15% of their stake. Inflation is introduced to prevent Kairo-holding and incentivize participation, so that the fund's meritocratic nature is maintained.
 
@@ -161,7 +159,7 @@ A mistake in the coding of smart contracts or reference data might affect a grea
 
 #### 1.4.7 Interoperability
 
-Supporting cross-chain and blockchain to legacy systems operations will be a major challenge for Betoken. Solutions are emerging to handle this issue in the near future (Polkadot, Cosmos, KyberNetwork).
+Supporting cross-chain crypto-asset investment will be a major opportunity for Betoken. Solutions are emerging to handle this issue in the near future (Polkadot, Cosmos, KyberNetwork).
 
 ## 2. Implementation Details
 
@@ -352,18 +350,21 @@ The road map of Betoken includes several phases.
 * Testnet Alpha
 
 ### Feb-March 2018
-* UX improvements
+* UI & UX improvements
 * Further smart contract development
-* Contract audit & testing
+* Internal contract audit & testing
 * Incentive model analysis & adjustments
+
+### Q2-Q3 2018
+* Whitepaper 1.0
+* Legal consulting & paperwork
+* Expanding Incentivized Meritocracy to other applications
+* Testing Incentivized Meritocracies on existing organizations
+* Third-party smart contract audits
 * Customer research & community outreach
 
-### April 2018
-* Whitepaper
-* Mainnet Alpha (Whitelisted participants / Developer kill-switch / Initial investment limit)
-
-### Q3 2018
-* Mainnet Beta
+### Q4 2018
+* Mainnet Pilot
 * Official release
 
 ## 5. The team
