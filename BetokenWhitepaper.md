@@ -209,7 +209,7 @@ For the functions that transitions the fund to the next phase, the successful ca
 
 Betoken uses Kyber Network as the token trading platform for executing all of its investments.
 
-KyberNetwork is "an on-chain protocol which allows instant exchange and conversion of digital assets (e.g. crypto tokens) and cryptocurrencies (e.g. Ether, Bitcoin, ZCash) with high liquidity."[[source](https://kyber.network/assets/KyberNetworkWhitepaper.pdf)] It is a far superior option than EtherDelta, since it allows for instant token exchange which makes it able to avoid the problems mentioned in 2.3.2. The inclusion of KyberNetwork can minimize the number of moving parts in Betoken's operation and significantly reduce Betoken's attack surface, reducing Betoken's running and maintenance costs and increasing its security.
+KyberNetwork is "an on-chain protocol which allows instant exchange and conversion of digital assets (e.g. crypto tokens) and cryptocurrencies (e.g. Ether, Bitcoin, ZCash) with high liquidity."[[source](https://home.kyber.network/assets/KyberNetworkWhitepaper.pdf)] It is a far superior option than EtherDelta, since it allows for instant token exchange which makes it able to avoid the problems mentioned in 2.3.2. The inclusion of KyberNetwork can minimize the number of moving parts in Betoken's operation and significantly reduce Betoken's attack surface, reducing Betoken's running and maintenance costs and increasing its security.
 
 ### 2.4 Rules In The Fund
 
