@@ -67,19 +67,19 @@ When they withdraw $X$ Ether, they have to burn some of their shares, the amount
 
 * $shares = constant \times X$
 
-During this period, users can also propose investments into ERC20 tokens by staking some Kairos — the name we use for control tokens. You will need to stake Kairos when you create an investment proposal. There is a restriction where you must stake no less than a certain proportion of your Kairo balance when staking.
-
-After a certain time has passed, any changes to proposals and stakes are no longer allowed, and existing proposals are turned into actual investments using the equation
+After the deposit & withdraw period, users can start proposing investments into ERC20 tokens by staking some Kairos — the name we use for control tokens. Proposals are immediately turned into actual investments using the equation
 
 - $investmentAmount = totalFunds \times \frac{proposalStake}{totalKairoSupply}$
 
-After waiting for a certain time (ex. 30 days), the fund sells all tokens it invested in at the current market price. After the sell process is finished, the fund automatically determines how profitable each investment proposal was and redistributes Kairo based on the results. The amount of Kairos a user gets back for each proposal is $userStake \times (1 + ROIofProposal + inflationRate)$ if they supported it, and $userStake \times (1 - ROIofProposal + inflationRate) $ if they went against it, so if inflation is 5% and a proposal had a 20% ROI, everyone on the supporting side gets 25% more Kairos back, and everyone on the opposing side loses 15% of their stake. Inflation is introduced to prevent Kairo-holding and incentivize participation, so that the fund's meritocratic nature is maintained.
+After the proposal making period is over and having waited for a certain time (ex. 30 days), the fund sells all tokens it invested in at the current market price. After the sell process is finished, the fund automatically determines how profitable each investment proposal was and redistributes Kairo based on the results. The amount of Kairos a user gets back for each proposal is $stake \times (1 + ROIofProposal + inflationRate)$ so if inflation is 5% and one of your proposals had a 20% ROI, you would get 25% more Kairos back. Inflation is introduced to prevent Kairo-holding and incentivize participation, so that the fund's meritocratic nature is maintained.
 
-At the end of every cycle, a certain proportion (20%) of total profits is set aside as commission and distributed among Kairo holders proportional to the amount they hold. A certain proportion of fund assets is also sent to Betoken's developers as a fee for using the platform.
+At the end of every cycle, a certain proportion (20%) of total profits is set aside as commission and distributed among Kairo holders proportional to the amount they hold. A certain proportion of fund assets is also sent to Betoken's developers as a fee to ensure platform maintenance and future developments.
 
 ### 1.3 Reasons Why Betoken's Model May Work
 
-Since Betoken is something unprecedented, we do not have evidence that its model will work as intended. A formal proof of Betoken's plausibility also seems unlikely, since it's quite difficult to accurately model actors' behaviors. Therefore, we can only give here several possible reasons for which Betoken will work as intended.
+Since Betoken and its Incentivized Meritocracy are unprecedented, we do not have evidence that its model will work as intended. A formal proof of Betoken's plausibility also seems unlikely, since it's quite difficult to accurately model actors' behaviors. Therefore, as of now we can only give here several possible reasons for which Betoken will work as intended.
+
+(Of course, we don't intend to let matters remain this way. We plan to empirically test our model on existing organizations and make improvements accordingly.)
 
 #### 1.3.1 Better Than Direct Investment
 
@@ -184,30 +184,30 @@ The reasons for choosing the second scheme are:
 
 Each cycle is divided into 5 phases:
 
-* Change Making: When investors deposit and withdraw their funds, and  managers stake Kairo to make investment decisions for the fund.
+* Change Making: When investors deposit and withdraw their funds.
+* Proposal Making: When managers stake Kairo to make investments for the fund.
 * Waiting: When everyone waits and let the token prices change.
-  * At the beginning users are expected to compete to call the "Buy Tokens" function for each proposal, and the  winning callers will be rewarded with Kairo. This is similar to [the Ethereum Alarm Clock.](http://www.ethereum-alarm-clock.com/)
 * Finalizing: When the invested tokens are sold and Kairo holders redeem their stakes + rewards/penalties from proposals they staked in.
-  * Users are expected to compete to call the "Sell Tokens" function for each proposal, and the  winning callers will be rewarded with Kairo.
-  * Managers are expected to make a function call to redeem Kairos for each proposal they staked in, after the proposal's tokens have been sold.
+  * Managers are expected to redeem Kairos from their own proposals, and the selling of the respective tokens will be included in the same function calls to the smart contract.
 * Finalized: When Kairo holders can redeem their commission. The Kairo smart contract is "paused" before the start of the next cycle (to prevent redeeming commission multiple times for the same tokens).
 
 In a preliminary setup, the lengths of each phase are as follows:
 
-* Change Making: 2 days
+* Change Making: 1 day
+* Proposal Making: 1 day
 * Waiting: 26 days
 * Finalizing: 1 day
 * Finalized: 1 day
 
 Totaling 30 days.
 
-For the functions that transitions the fund to the next phase, the successful caller can get a reward in Kairo. (still Ethereum Alarm Clock-like setup)
+For the functions that transitions the fund to the next phase, the successful caller can get a reward in Kairo. (similar to Ethereum Alarm Clock)
 
 ### 2.3 Token Trading
 
 Betoken uses Kyber Network as the token trading platform for executing all of its investments.
 
-KyberNetwork is "an on-chain protocol which allows instant exchange and conversion of digital assets (e.g. crypto tokens) and cryptocurrencies (e.g. Ether, Bitcoin, ZCash) with high liquidity."[[source](https://home.kyber.network/assets/KyberNetworkWhitepaper.pdf)] It is a far superior option than EtherDelta, since it allows for instant token exchange which makes it able to avoid the problems mentioned in 2.3.2. The inclusion of KyberNetwork can minimize the number of moving parts in Betoken's operation and significantly reduce Betoken's attack surface, reducing Betoken's running and maintenance costs and increasing its security.
+KyberNetwork is "an on-chain protocol which allows instant exchange and conversion of digital assets (e.g. crypto tokens) and cryptocurrencies (e.g. Ether, Bitcoin, ZCash) with high liquidity."[[source](https://home.kyber.network/assets/KyberNetworkWhitepaper.pdf)] The inclusion of KyberNetwork can minimize the number of moving parts in Betoken's operation and significantly reduce Betoken's attack surface, reducing Betoken's running and maintenance costs and increasing its security.
 
 ### 2.4 Rules In The Fund
 
@@ -253,7 +253,7 @@ There are two options for what to use as votes in the DAO: one's Kairo balance a
 ##### 2.6.1.1 Reasons to Choose Kairo
 
 * Using Kairo as votes would add additional value to Kairo tokens, benefiting the Incentivized Meritocracy.
-* Kairo holders are likely more involved in the fund's operations than investors, which means they would know better about what's best for the fund.
+* Kairo holders are likely more involved in the fund's operations than investors, which means they would know better about what's best for the fund, and would have a higher participation rate.
 
 ##### 2.6.1.2 Reasons to Choose Betoken Shares
 
@@ -293,11 +293,11 @@ Therefore, the intensity of competition that Betoken will face largely depends o
 
 There are several competitors in this area:
 
-* ICONOMI and Melon are platforms that allow managers to create their own hedge funds with customizable rules. There are reasons that may convince a manager to join either side, so there's no clear winner here.
+* ICONOMI and Melon are platforms that allow managers to create their own hedge funds with customizable rules. The freedom of customization may appeal to some managers, but it comes with its own downside: you'd have to bootstrap a fund---its investment methods, its customer base, its reputation, etc.---from scratch if you join their platform. On the other hand, new managers in Betoken will be able to immediately start working for a full-fledged fund. It's the difference in difficulty between starting your own company and getting a job at an established company.
 * Numerai is a hedge fund that uses an interesting auction system that lets data scientists compete to provide the best algorithms for predicting stock prices. The top rated algorithms will be used to make investment decisions for the hedge fund. [[source](https://numer.ai/whitepaper.pdf)] Numerai's model is inferior to Betoken's almost in every respect, because
   * In Betoken, the commission managers get is proportional to the size of the fund's assets, while the same is not necessarily true in Numerai.
   * The bets data scientists make in Numerai have binary results: either you lose all of your staked tokens or you lose none. In contrast, proposals in Betoken have much more granular results. This makes Betoken appeal better to risk-averse managers.
-  * Numerai's model rewards algorithms that fit past data best, rather than algorithms that will perform well in real investment decisions, so there's a gap between the model's optimization goal and the actual goal. Betoken's model, on the other hand, rewards managers that **actually make the best decisions/most profit**.
+  * Numerai's model rewards algorithms that fit past data best, rather than algorithms that will perform well in real investment decisions, so there's a gap between the model's optimization goal and the actual goal. Betoken's model, on the other hand, rewards managers who **actually make the best decisions/most profit**.
   * There is a steep learning curve for joining Numerai as a manager, while all you have to do to start making decisions for Betoken is getting some Kairo.
 * Quantopian and Quantiacs are crowdsourced hedge funds using similar but slightly better models compared to Numerai:
   * Users enter their algorithms in trading competitions, and the best algorithms are used for actual investing.
@@ -311,8 +311,9 @@ Since one manager can make decisions for as many hedge funds/platforms they like
 ##### 3.1.2.1 Pros for Choosing Betoken as a Manager
 
 * Low barrier of entry. No need to learn a specific language, API, or type of algorithm, or even anything about programming; all you need to do is get some Kairo and start making decisions.
+* No bootstrapping effort needed. New managers in Betoken will be able to immediately start working for a full-fledged fund, rather than having to bootstrap a fund by themselves.
 * Higher returns. The ROI for making decisions in Betoken is even higher than that of directly investing into the tokens, and the commission you get is proportional to the fund's assets. No middleman taking away a large portion of your profits for no good reason.
-* Automation: Betoken'll provide an automation for the whole buying, selling and reporting process. See part 1.3.4 Reduction of operational costs.
+* Automation: Betoken will automate the whole buying, selling and reporting process. See part 1.3.4 Reduction of operational costs.
 
 ##### 3.1.2.2 Cons for Choosing Betoken as a Manager
 
@@ -342,8 +343,6 @@ There is evidence that quants and data scientists are interested in participatin
 
 ## 4. Road map
 
-The road map of Betoken includes several phases.
-
 ### Jan 2018
 * MVP
 * Landing page
@@ -359,7 +358,7 @@ The road map of Betoken includes several phases.
 * Whitepaper 1.0
 * Legal consulting & paperwork
 * Expanding Incentivized Meritocracy to other applications
-* Testing Incentivized Meritocracies on existing organizations
+* Testing Incentivized Meritocracy in existing organizations
 * Third-party smart contract audits
 * Customer research & community outreach
 
@@ -374,10 +373,6 @@ The road map of Betoken includes several phases.
 #### Zebang (Zefram) Liu
 
 Zefram is the cofounder and lead developer of Betoken. He currently studies Computer Science at UC San Diego. He is passionate about crypto-economics and mechanism design.
-
-#### Owen Shen
-
-Owen is a Computer Science student at UC San Diego. He's interested in furthering the study of human decision-making as well as reducing potential harm from catastrophic risks.
 
 #### Surya Krishnan
 
