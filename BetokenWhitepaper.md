@@ -163,7 +163,9 @@ Supporting cross-chain crypto-asset investment will be a major opportunity for B
 
 ## 2. Implementation Details
 
-### 2.1 Kairo's Initial Distribution
+### 2.1 Bootstrapping
+
+#### 2.1.1 Kairo's Initial Distribution
 
 As of writing, we have not decided on Kairo's initial distribution scheme. There are two options that we're considering:
 
@@ -179,6 +181,10 @@ The reasons for choosing the second scheme are:
 
 * It provides us with the funding that we need to make progress in the application and community development.
 * People are more familiar with ICOs, so an ICO may have more traction.
+
+#### 2.1.2 Initial AUM Threshold
+
+In order to make sure that there will be enough commission to let the Incentivized Meritocracy be self-sustainable, we will set an AUM (Asset Under Management) threshold in the first investment cycle.
 
 ### 2.2 Cycle Phases
 
