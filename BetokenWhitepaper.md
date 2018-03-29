@@ -221,13 +221,10 @@ KyberNetwork is "an on-chain protocol which allows instant exchange and conversi
 
 ### 2.4 Rules In The Fund
 
-Partly to ensure scalability and partly to prevent spamming attacks, there are certain rules in the fund's smart contract, which will be listed below. Note: most of the exact numbers used are only placeholders, and will likely be different in future releases.
+Note: most of the exact numbers used are only placeholders, and will likely be different in future releases.
 
-* Each proposal can invest in only one token, and two proposals cannot invest in the same token.
-* When staking into a proposal, the size of the stake must be no less than 25% of one's Kairo balance.
-* The inflation rate of Kairo is 25%.
-* A user cannot stake into both sides of the same proposal.
-* If the number of supporters of a proposal reaches zero, the proposal will be removed from the list. No similar rule for the number of opposers.
+* Each proposal can invest in only one token.
+* The inflation rate of Kairo is 10%.
 
 ### 2.5 Smart Contract Maintenance
 
