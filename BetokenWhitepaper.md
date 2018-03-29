@@ -8,8 +8,6 @@ Zebang (Zefram) Liu, Guillaume Palayer
 
 Contact: hello@betoken.fund
 
-V0.2, updated on February 24, 2018.
-
 ## Introduction
 
 Betoken is a decentralized hedge fund built on the Ethereum blockchain that invests in ERC20 tokens. It automatically redistributes control over investment decisions to managers who make the most profitable investment proposals. This collected wisdom is compiled into good investment decisions, using a unique decision making system we call "Incentivized Meritocracy".
@@ -46,6 +44,14 @@ Having the people with the most merit in charge is clearly good for an organizat
 
 Incentivized Meritocracies have never been successfully implemented before, since it is near impossible to have a centralized actor that can judge everyone impartially. However, newly-invented smart-contract-enabled blockchains such as Ethereum allow us to construct **decentralized** actors that can uphold unbreakable rules, making implementing an actual Incentivized Meritocracy possible. Betoken is the first decentralized application that incorporates an implementation of Incentivized Meritocracy.
 
+---
+
+**Important Note: **The rest of Section 1 will be a high level description of Betoken's implementation of Incentivized Meritocracy. It will only be within the context of the Betoken hedge fund, rather than a generalized Incentivized Meritocracy. 
+
+However, a formal and generalized description of Incentivized Meritocracies, as well as proof that Incentivized Meritocracies are indeed able to optimize the system's value, has been written. It can be found here: https://github.com/Betoken/documents/blob/master/Incentivized%20Meritocracies/Incentivized%20Meritocracies.pdf
+
+---
+
 ### 1.2 Betoken's Solution
 
 There are four central ideas behind Betoken's solution to Incentivized Meritocracy:
@@ -75,11 +81,9 @@ After the proposal making period is over and having waited for a certain time (e
 
 At the end of every cycle, a certain proportion (20%) of total profits is set aside as commission and distributed among Kairo holders proportional to the amount they hold. A certain proportion of fund assets is also sent to Betoken's developers as a fee to ensure platform maintenance and future developments.
 
-### 1.3 Reasons Why Betoken's Model May Work
+### 1.3 Additional Reasons of Why Betoken Will be Successful
 
-Since Betoken and its Incentivized Meritocracy are unprecedented, we do not have evidence that its model will work as intended. A formal proof of Betoken's plausibility also seems unlikely, since it's quite difficult to accurately model actors' behaviors. Therefore, as of now we can only give here several possible reasons for which Betoken will work as intended.
-
-(Of course, we don't intend to let matters remain this way. We plan to empirically test our model on existing organizations and make improvements accordingly.)
+While we do have a [formal proof](https://github.com/Betoken/documents/blob/master/Incentivized%20Meritocracies/Incentivized%20Meritocracies.pdf) that Betoken's Incentivized Meritocracy will optimize the fund's profits, we feel it best to provide some additional reasons of why Betoken will be successful that are more intuitive and more closely related to reality. They will be laid out below.
 
 #### 1.3.1 Better Than Direct Investment
 
@@ -87,7 +91,7 @@ To be able to attract people with flair in investing, we must make participating
 
 * $ROI_{Betoken} = ROI_{Direct Investment} + \frac{commission}{investmentAmount} \geqslant ROI_{DirectInvestment}$
 
-Therefore, investors are incentivized to join Betoken and make investment decisions. If Betoken does work successfully, this would be one of the main reasons.
+Therefore, managers are incentivized to join Betoken and make investment decisions.
 
 #### 1.3.2 Analogous to Markets
 
