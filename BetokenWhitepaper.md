@@ -10,7 +10,7 @@ Contact: hello@betoken.fund
 
 ## Introduction
 
-Betoken is a decentralized hedge fund built on the Ethereum blockchain that invests in ERC20 tokens. It automatically redistributes control over investment decisions to managers who make the most profitable investment proposals. This collected wisdom is compiled into good investment decisions, using a unique decision making system we call "Incentivized Meritocracy".
+Betoken is a decentralized hedge fund built on the Ethereum blockchain that invests in ERC20 tokens. It automatically redistributes control over investment decisions to managers who make the most profitable investments. This collected wisdom is compiled into good investment decisions, using a unique decision making system we call "Incentivized Meritocracy".
 
 The core ideas behind Betoken's Incentivized Meritocracy are:
 
@@ -73,13 +73,15 @@ When they withdraw $X$ Ether, they have to burn some of their shares, the amount
 
 * $shares = constant \times X$
 
-After the deposit & withdraw period, users can start proposing investments into ERC20 tokens by staking some Kairos — the name we use for control tokens. Proposals are immediately turned into actual investments using the equation
+After the deposit & withdraw period, managers can start making investment decisions for the fund by staking some Kairos — the name we use for control tokens. Decisions are immediately turned into actual investments using the equation
 
-- $investmentAmount = totalFunds \times \frac{proposalStake}{totalKairoSupply}$
+- $investmentAmount = totalFunds \times \frac{decisionStake}{totalKairoSupply}$
 
-After the proposal making period is over and having waited for a certain time (ex. 30 days), the fund sells all tokens it invested in at the current market price. After the sell process is finished, the fund automatically determines how profitable each investment proposal was and redistributes Kairo based on the results. The amount of Kairos a user gets back for each proposal is $stake \times (1 + ROIofProposal + inflationRate)$ so if inflation is 5% and one of your proposals had a 20% ROI, you would get 25% more Kairos back. Inflation is introduced to prevent Kairo-holding and incentivize participation, so that the fund's meritocratic nature is maintained.
+During the decision-making phase, managers can also sell any asset they invested in whenever they want at the current market price. After an asset has been sold, the fund's smart contract automatically determines how profitable the investment was and rewards/takes away Kairo based on the results. The amount of Kairos a user gets back after selling an asset is $stake \times (1 + ROI)$, so if one of your investments had a 20% ROI, you would get 20% more Kairos back.
 
-At the end of every cycle, a certain proportion (20%) of total profits is set aside as commission and distributed among Kairo holders proportional to the amount they hold. A certain proportion of fund assets is also sent to Betoken's developers as a fee to ensure platform maintenance and future developments.
+All investments should be sold before the end of the decision-making phase, or one's staked Kairos would be lost.
+
+After the decision-making phase is over, a certain proportion (20%) of total profits is set aside as commission and distributed among Kairo holders proportional to the amount they hold. A certain proportion of fund assets (0.2%) is also sent to Betoken's developers as a fee to ensure platform maintenance and future developments.
 
 ### 1.3 Additional Reasons of Why Betoken Will be Successful
 
@@ -95,7 +97,7 @@ Therefore, managers are incentivized to join Betoken and make investment decisio
 
 #### 1.3.2 Analogous to Markets
 
-Betoken's Incentivized Meritocracy shares many similarities to markets of investable assets, such as the stock market and the cryptocurrency market. In fact, staking for a proposal is almost exactly the same as directly investing the token, except that the ROI is better. Therefore, we can estimate Betoken's success as a meritocracy by looking at how meritocratic the stock market and other markets currently are.
+Betoken's Incentivized Meritocracy shares many similarities to markets of investable assets, such as the stock market and the cryptocurrency market. In fact, staking in an investment decision is almost exactly the same as directly investing the token, except that the ROI is better. Therefore, we can estimate Betoken's success as a meritocracy by looking at how meritocratic the stock market and other markets currently are.
 
 To our knowledge, there is no evidence that they are not meritocratic: no one's heard of a dumb and inexperienced investor besting market growth, and smart people (like those at Renaissance Technologies) have achieved amazing ROIs (71.8% annual on average! [[source](https://en.wikipedia.org/wiki/Renaissance_Technologies)]). Thus, we can expect that Betoken will also be meritocratic.
 
@@ -115,26 +117,7 @@ We expect a wave of third party resources to service the funds and individual in
 
 ### 1.4 Potential challenges
 
-#### 1.4.1 Cyclic Design
-
-The reason that Betoken functions in rigid cycles rather than a more asynchronous manner is that it makes the model much, much simpler. Asynchronicity will introduce many problems that we don't necessarily know good answers to, such as:
-
-* How do we ensure that users can't just hold on to their Kairos without ever making investment decisions?
-* How can we prevent users from canceling their stakes in a proposal that starts crashing right before its profitability is supposed to be evaluated?
-* How do we evaluate the profitability of a proposal if anyone can stake in it at any moment before its evaluation?
-* How do we handle investments if users can deposit and withdraw at any time?
-
-Each of the problems mentioned above has more than one potential solutions, thus many design choices will have to be made, often without a way of providing good justification. Further more, introducing additional complexity to a smart contract based system is often a bad idea, since computations and storage are expensive, and bugs are often deadly.
-
-Due to the above reasons, Betoken employs a cyclic design. However, the lack of asynchronicity introduces a number of problems.
-
-##### 1.4.1.1 Short Term Decisions
-
-Suppose each cycle is 30 days long. If some user knows that token A's price will rise greatly on the 10th day of the current cycle and drop soon afterwards, there's no way for the fund to utilize this information and sell at the peak. If another user knows that token B's price will drop greatly on the 10th day of the current cycle and rise back soon afterwards, there's no way for the fund to buy the dip either. This means that the fund misses out on opportunities shorter-term than the specified cycles.
-
-In a cyclic model, there exists a dilemma between utilizing short-term opportunities and having consistent gains. To be able to bank on short-term price changes, the length of cycles needs to be short; to be able to have consistent gains resistant to temporary price extremities, the length of cycles needs to be long so that erratic changes are evened out over time. We think that relatively long cycles are good, because investors should focus on the long-term potential that a token and its related technology has, rather than only on the price fluctuations.
-
-#### 1.4.2 The Existing Regulatory Framework
+#### 1.4.1 The Existing Regulatory Framework
 
 Existing regulations do not provide an appropriate framework to existing and future blockchain projects and should not be applied to those projects as-is.
 
@@ -144,24 +127,24 @@ Betoken aims to evolve quickly if the framework and rules are updated by the reg
 
 More details about the constraints of applying a blockchain technology to finance can be found here: https://www.esma.europa.eu/sites/default/files/library/dlt_report_-_esma50-1121423017-285.pdf.
 
-#### 1.4.3 Approval, Licensing and Operating Requirements
+#### 1.4.2 Approval, Licensing and Operating Requirements
 
 Betoken could need to get an approval and licensing from a national regulator, according to specific requirements in terms of operating rules, organizational structure, and human and material resources.
 Once authorized, Betoken could be subject to a certain number of organizational rules, market surveillance and conduct requirements, in order to ensure that the markets are fair, transparent and efficient places, and to provide customer protection.
 
-#### 1.4.4 KYC and AML Compliance
+#### 1.4.3 KYC and AML Compliance
 
 On the question of fraudulent activities and AML (Anti-Money Laundering), a robust governance would ensure that only trustworthy participants are accepted. In addition, the Ethereum network would allow for more transparency on transaction history and beneficial owners, which would enhance KYC (Know Your Customer) and help trace and prevent fraud.
 
-#### 1.4.5 Tax Burden
+#### 1.4.4 Tax Burden
 
 Some challenges could also arise from the transnational nature of the blockchain. For example, a tax may apply on a given transaction depending on its place of execution. The law applicable to blockchain networks should be specified in advance to avoid conflicts.
 
-#### 1.4.6 Operational risks
+#### 1.4.5 Operational risks
 
 A mistake in the coding of smart contracts or reference data might affect a great number of participants. What would happen if the external data are flawed or become unavailable?
 
-#### 1.4.7 Interoperability
+#### 1.4.6 Interoperability
 
 Supporting cross-chain crypto-asset investment will be a major opportunity for Betoken. Solutions are emerging to handle this issue in the near future (Polkadot, Cosmos, KyberNetwork).
 
@@ -171,20 +154,17 @@ Supporting cross-chain crypto-asset investment will be a major opportunity for B
 
 #### 2.1.1 Kairo's Initial Distribution
 
-As of writing, we have not decided on Kairo's initial distribution scheme. There are two options that we're considering:
+We have decided to use a two-phase ICO as the means of distributing Kairo to the public.
 
-1. Any user who deposits investment during the first investment cycle will receive Kairo proportional to the investment. Withdrawing investment will of course be disabled. This is the model currently implemented in the smart contracts.
-2. We will have a traditional ICO for Kairo.
+* Stage 1: Before the Mainnet Pilot, we will distribute Kairo to early adopters who want to play with and help us test the Mainnet Pilot.
+* Stage 2: Before our final release, we will do a second coin offering to facilitate a wider distribution of Kairo.
 
-The reasons for choosing the first scheme are:
+We understand that there has been vitriol towards ICOs in the crypto community, so we'd like to provide some justification for it.
 
-* It makes bootstrapping the Incentivized Meritocracy easier, since users aren't paying for the Kairo they get.
-* It allows us to attract testers for the pre-release versions that will be released on Mainnet by making pre-release Kairo and after-release Kairo compatible, and providing a more favorable conversion rate for the test versions. For example, if you get 1 Kairo for every Ether you deposit in the final release, you can get 2 Kairo for every Ether you deposit in the test versions.
+* We have considered giving out Kairo for free when investors deposit during the first investment cycle. However, we want Kairo to be in the hands of users who actually want to make decisions for the fund, as it maximizes the effectiveness of Betoken's Incentivized Meritocracy. Giving Kairo to investors who want the community to manage their funds for them goes against this goal. Doing an ICO can help ensure that most of Kairo holders actually want to participate in the fund's decision-making process.
 
-The reasons for choosing the second scheme are:
 
-* It provides us with the funding that we need to make progress in the application and community development.
-* People are more familiar with ICOs, so an ICO may have more traction.
+* It provides us with the funding we need to make progress in the technical and community development.
 
 #### 2.1.2 Initial AUM Threshold
 
@@ -192,39 +172,27 @@ In order to make sure that there will be enough commission to let the Incentiviz
 
 ### 2.2 Cycle Phases
 
-Each cycle is divided into 5 phases:
+Each cycle is divided into 3 phases:
 
-* Change Making: When investors deposit and withdraw their funds.
-* Proposal Making: When managers stake Kairo to make investments for the fund.
-* Waiting: When everyone waits and let the token prices change.
-* Finalizing: When the invested tokens are sold and Kairo holders redeem their stakes + rewards/penalties from proposals they staked in.
-  * Managers are expected to redeem Kairos from their own proposals, and the selling of the respective tokens will be included in the same function calls to the smart contract.
-* Finalized: When Kairo holders can redeem their commission. The Kairo smart contract is "paused" before the start of the next cycle (to prevent redeeming commission multiple times for the same tokens).
+* Deposit & Withdraw: When investors deposit and withdraw their funds.
+* Make Decisions: When managers stake Kairo to make investments for the fund.
+* Redeem Commission: When Kairo holders can redeem their commission. The Kairo smart contract is "paused" before the start of the next cycle (to prevent redeeming commission multiple times using the same tokens).
 
 In a preliminary setup, the lengths of each phase are as follows:
 
-* Change Making: 1 day
-* Proposal Making: 1 day
-* Waiting: 26 days
-* Finalizing: 1 day
-* Finalized: 1 day
+* Deposit & Withdraw: 1 day
+* Make Decisions: 28 days
+* Redeem Commission: 1 day
 
 Totaling 30 days.
 
 For the functions that transitions the fund to the next phase, the successful caller can get a reward in Kairo. (similar to Ethereum Alarm Clock)
 
-### 2.3 Token Trading
+### 2.3 Token Exchange
 
-Betoken uses Kyber Network as the token trading platform for executing all of its investments.
+Betoken uses Kyber Network as the token exchange platform for executing all of its investments.
 
 KyberNetwork is "an on-chain protocol which allows instant exchange and conversion of digital assets (e.g. crypto tokens) and cryptocurrencies (e.g. Ether, Bitcoin, ZCash) with high liquidity."[[source](https://home.kyber.network/assets/KyberNetworkWhitepaper.pdf)] The inclusion of KyberNetwork can minimize the number of moving parts in Betoken's operation and significantly reduce Betoken's attack surface, reducing Betoken's running and maintenance costs and increasing its security.
-
-### 2.4 Rules In The Fund
-
-Note: most of the exact numbers used are only placeholders, and will likely be different in future releases.
-
-* Each proposal can invest in only one token.
-* The inflation rate of Kairo is 10%.
 
 ### 2.5 Smart Contract Maintenance
 
@@ -303,7 +271,7 @@ There are several competitors in this area:
 * ICONOMI and Melon are platforms that allow managers to create their own hedge funds with customizable rules. The freedom of customization may appeal to some managers, but it comes with its own downside: you'd have to bootstrap a fund---its investment methods, its customer base, its reputation, etc.---from scratch if you join their platform. On the other hand, new managers in Betoken will be able to immediately start working for a full-fledged fund. It's the difference in difficulty between starting your own company and getting a job at an established company.
 * Numerai is a hedge fund that uses an interesting auction system that lets data scientists compete to provide the best algorithms for predicting stock prices. The top rated algorithms will be used to make investment decisions for the hedge fund. [[source](https://numer.ai/whitepaper.pdf)] Numerai's model is inferior to Betoken's almost in every respect, because
   * In Betoken, the commission managers get is proportional to the size of the fund's assets, while the same is not necessarily true in Numerai.
-  * The bets data scientists make in Numerai have binary results: either you lose all of your staked tokens or you lose none. In contrast, proposals in Betoken have much more granular results. This makes Betoken appeal better to risk-averse managers.
+  * The bets data scientists make in Numerai have binary results: either you lose all of your staked tokens or you lose none. In contrast, decisions in Betoken have much more granular results. This makes Betoken appeal better to risk-averse managers.
   * Numerai's model rewards algorithms that fit past data best, rather than algorithms that will perform well in real investment decisions, so there's a gap between the model's optimization goal and the actual goal. Betoken's model, on the other hand, rewards managers who **actually make the best decisions/most profit**.
   * There is a steep learning curve for joining Numerai as a manager, while all you have to do to start making decisions for Betoken is getting some Kairo.
 * Quantopian and Quantiacs are crowdsourced hedge funds using similar but slightly better models compared to Numerai:
