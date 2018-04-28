@@ -81,7 +81,7 @@ During the decision-making phase, managers can also sell any asset they invested
 
 All investments should be sold before the end of the decision-making phase, or one's staked Kairos would be lost.
 
-After the decision-making phase is over, a certain proportion (20%) of total profits and is set aside as commission and distributed among Kairo holders proportional to the amount they hold. A certain proportion of fund assets (0.2%) is also set aside and distributed among Kairo holders. In addition, an exit fee (3%) is charged whenever one withdraws funds.
+After the decision-making phase is over, a certain proportion (20%) of total profits and is set aside as commission and distributed among Kairo holders proportional to the amount they hold. A certain proportion of fund assets (0.1%) is also set aside and distributed among Kairo holders, and another 0.1% is paid to Betoken's developers to fund future support. In addition, an exit fee (3%) is charged whenever one withdraws funds.
 
 ### 1.3 Additional Reasons of Why Betoken Will be Successful
 
