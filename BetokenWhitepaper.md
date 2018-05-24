@@ -46,7 +46,7 @@ Incentivized Meritocracies have never been successfully implemented before, sinc
 
 ---
 
-**Important Note: **The rest of Section 1 will be a high level description of Betoken's implementation of Incentivized Meritocracy. It will only be within the context of the Betoken hedge fund, rather than a generalized Incentivized Meritocracy. 
+**Important Note:** The rest of Section 1 will be a high level description of Betoken's implementation of Incentivized Meritocracy. It will only be within the context of the Betoken hedge fund, rather than a generalized Incentivized Meritocracy.
 
 However, a formal and generalized description of Incentivized Meritocracies, as well as proof that Incentivized Meritocracies are indeed able to optimize the system's value, has been written. It can be found here: https://github.com/Betoken/documents/blob/master/Incentivized%20Meritocracies/Incentivized%20Meritocracies.pdf
 
@@ -106,14 +106,8 @@ Since the launch of our Testnet Alpha, some people have told us that they haven'
 
 Compared to ICONOMI and Melon, where you have to bootstrap a new hedge fund completely on your own, Betoken is much more beginner-friendly. It's the difference between getting a job at a well-established company and starting your own company. This trait facilitates the inflow of new managers into the Incentivized Meritocracy, which is essential to keeping Betoken's model effective in making decisions.
 
-#### 1.3.4 Reduction of Operational Costs
-Crypto fund managers and individual investors will become ultra-aware and over-burdened by one major painful oversight: operations. The process of buying, selling and storing cryptocurrency is not for the light hearted. There’s managing exchanges and OTC partners, setting up digital wallets, ensuring a foolproof custody process and tracking activities.
-
-If you want a portfolio of 10 cryptoassets, it would take a couple of hours at least to just execute that portfolio. If you sign up for a centralized exchange on day 1, you have 100 ETH and want to put 10 ETH in 10 assets, that’s a three-hour process of signing up on exchanges, purchasing assets, registering your identity, actually getting your ethers, transferring your ethers, waiting for however long it takes for confirmation, then trading on a crypto-to-crypto order book, and then having to pull all those off the exchanges if you want to be secure.
-
-This requires focus, time, energy, patience and resources. Fantasies of patient, thoughtful investing will be obliterated by the grind of producing tax-tracking spreadsheets and digital wallet management. It’s a complete disaster from a user experience perspective. Betoken will focus on making investing in crypto as simple as deposit-and-profit, so that research and due diligence is done by managers in their stead. Betoken’s users just instantly gain exposure to a portfolio of cryptoassets. It’s way easier.
-
-We expect a wave of third party resources to service the funds and individual investors that want to stay in business. We want to be part of this new wave of services by **automating the whole buying, selling and reporting process**. Facilitating the collection, consolidation and sharing of data for reporting, risk management and supervisory purposes is also one of the potential key benefits of Betoken.
+#### 1.3.4 Cost-effective
+One major painful oversight for crypto fund managers and individual investors is operations. We aim to be part of a new wave of tools to service funds and individual investors by **automating the whole buying, selling and reporting process**. Facilitating the collection, consolidation and sharing of data for taxe and legal purposes is also one of the potential key benefits of Betoken.
 
 ### 1.4 Potential challenges
 
@@ -343,22 +337,18 @@ There is evidence that quants and data scientists are interested in participatin
 
 ## 5. The team
 
-### 5.1 Core members
-
 #### Zebang (Zefram) Liu
 
 Zefram is the cofounder and lead developer of Betoken. He currently studies Computer Science at UC San Diego. He is passionate about crypto-economics and mechanism design.
 
 #### Surya Krishnan
 
-Surya is the cofounder and incentive researcher of Betoken.
+Surya is the cofounder and frontend developer of Betoken. Currently, he studies computer science at UC San Diego and Surya's goal is to build technology that enables people to realize their ideas.
 
 #### Guillaume Palayer
 
 Guillaume is the cofounder of Betoken. His mission is to design and code the front end experience of the dApp. He's also an user researcher passionate by the token economy and the decentralized Web.
 
-### 5.2 Advisors
-
 ## 6. Acknowledgement
 
-We thank our friends, namely ..., ... for their feedback on the earlier version of this paper.
+We thank our friends, namely Surya Krishnan, Angélique Rebardel, and Maxime Ruiz for their feedback on the earlier version of this paper.
