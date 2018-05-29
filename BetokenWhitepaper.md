@@ -107,7 +107,7 @@ Since the launch of our Testnet Alpha, some people have told us that they haven'
 Compared to ICONOMI and Melon, where you have to bootstrap a new hedge fund completely on your own, Betoken is much more beginner-friendly. It's the difference between getting a job at a well-established company and starting your own company. This trait facilitates the inflow of new managers into the Incentivized Meritocracy, which is essential to keeping Betoken's model effective in making decisions.
 
 #### 1.3.4 Cost-effective
-One major painful oversight for crypto fund managers and individual investors is operations. We aim to be part of a new wave of tools to service funds and individual investors by **automating the whole buying, selling and reporting process**. Facilitating the collection, consolidation and sharing of data for taxe and legal purposes is also one of the potential key benefits of Betoken.
+One major painful oversight for crypto fund managers and individual investors is operations. We aim to be part of a new wave of tools to service funds and individual investors by **automating the whole buying, selling and reporting process**. Facilitating the collection, consolidation and sharing of data for tax and legal purposes is also one of the potential key benefits of Betoken.
 
 ### 1.4 Potential challenges
 
