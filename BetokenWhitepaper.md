@@ -324,9 +324,8 @@ There is evidence that quants and data scientists are interested in participatin
 ### Q1 2019 
 
 - Official release
-- Second token sale
 
-### Q2 2019 
+### Q2 2019
 
 - Tax & legal tools
 - Python API to support Machine Learning agents
