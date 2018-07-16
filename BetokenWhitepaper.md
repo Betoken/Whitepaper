@@ -146,18 +146,7 @@ Supporting cross-chain crypto-asset investment will be a major opportunity for B
 
 ### 2.1 Kairo's Initial Distribution
 
-We have decided to use a two-phase ICO as the means of distributing Kairo to the public.
-
-* Stage 1: Before the Mainnet Pilot, we will distribute Kairo to early adopters who want to play with and help us test the Mainnet Pilot.
-* Stage 2: Before our final release, we will do a second coin offering to facilitate a wider distribution of Kairo.
-
-We understand that there has been vitriol towards ICOs in the crypto community, so we'd like to provide some justifications for it.
-
-* We have considered giving out Kairo for free when investors deposit during the first investment cycle. However, we want Kairo to be in the hands of users who actually want to make decisions for the fund, as it maximizes the effectiveness of Betoken's Incentivized Meritocracy. Giving Kairo to investors who want the community to manage their funds for them goes against this goal. Doing an ICO can help ensure that most of Kairo holders actually want to participate in the fund's decision-making process.
-
-
-* It provides us with the funding we need to make progress in the technical and community development.
-* We will also use a portion of the funds to bootstrap our Incentivized Meritocracy, by depositing it into the Betoken fund and giving our first managers enough incentives to participate.
+[*Under construction...stay tuned!*]
 
 ### 2.2 Cycle Phases
 
