@@ -1,4 +1,4 @@
-# Betoken Whitepaper Draft
+# Betoken Whitepaper
 
 A meritocratic hedge fund built on the Ethereum blockchain.
 
@@ -10,7 +10,7 @@ Contact: hello@betoken.fund
 
 ## Introduction
 
-Betoken is a decentralized hedge fund built on the Ethereum blockchain that invests in ERC20 tokens. It automatically redistributes control over investment decisions to managers who make the most profitable investments. This collected wisdom is compiled into good investment decisions, using a unique decision making system we call "Incentivized Meritocracy".
+Betoken is a decentralized hedge fund built on the Ethereum blockchain that invests in ERC20 tokens. Betoken relies on a large pool of managers to make investment decisions, each of whom maintains a portfolio using a portion of the fund. Individual portfolios are compiled into good investment decisions on the fund level using a unique decision making system we call "Incentivized Meritocracy", where control over investment decisions is continuously redistributed to managers who make the most profitable investments.
 
 The core ideas behind Betoken's Incentivized Meritocracy are:
 
@@ -19,7 +19,7 @@ The core ideas behind Betoken's Incentivized Meritocracy are:
 * Good decisions are rewarded with control tokens proportional to both the quality and the quantity of their benefits.
 * Bad decisions receive penalties in control tokens proportional to both how bad of a decision they were and how much damage they caused.
 
-Betoken is for everyone: everyone can join, everyone can invest, everyone can make decisions for the fund and be rewarded for making good ones. And everyone can rise to the top if they have the merit.
+Betoken is for everyone: anyone can join, anyone can invest, anyone can make decisions for the fund and be rewarded for making good ones. And anyone can rise to the top if they have the merit.
 
 Betoken is unstoppable: it is a completely decentralized application built on the censorship-resistant Ethereum blockchain.
 
@@ -119,7 +119,7 @@ The regulatory wait-and-see policies represent a significant obstacle. Simple th
 
 Betoken aims to evolve quickly if the framework and rules are updated by the regulators. The use of blockchain technology in the markets induces a change of paradigm. Since the development of blockchain-based “disintermediation” exchanges, the current regulatory regime appears to be ill-suited to facilitating growth and innovation in the Fintech community.
 
-More details about the constraints of applying a blockchain technology to finance can be found here: https://www.esma.europa.eu/sites/default/files/library/dlt_report_-_esma50-1121423017-285.pdf.
+More details about the constraints of applying a blockchain technology to finance can be found here: [https://www.esma.europa.eu/sites/default/files/library/dlt_report_-_esma50-1121423017-285.pdf](https://www.esma.europa.eu/sites/default/files/library/dlt_report_-_esma50-1121423017-285.pdf).
 
 #### 1.4.2 Approval, Licensing and Operating Requirements
 
@@ -140,13 +140,25 @@ A mistake in the coding of smart contracts or reference data might affect a grea
 
 #### 1.4.6 Interoperability
 
-Supporting cross-chain crypto-asset investment will be a major opportunity for Betoken. Solutions are emerging to handle this issue in the near future (Polkadot, Cosmos, KyberNetwork).
+Supporting cross-chain crypto-asset investment will be a major opportunity for Betoken. Solutions are emerging to handle this issue in the near future (Polkadot, Cosmos, Kyber Network).
 
 ## 2. Implementation Details
 
-### 2.1 Kairo's Initial Distribution
+### 2.1 Kairo's Distribution
 
-[*Under construction...stay tuned!*]
+#### 2.1.1 Initial Distribution
+
+We plan to use what we call **Initial Account Offering (IAO)** to handle Kairo's initial distribution. 
+
+Betoken's IAO has the following properties:
+
+* Instead of releasing Kairo as a normal ERC20 token that can be freely traded, we will make Kairo a **non-transferrable** token that still uses the ERC20 standard. This way, Kairo will be more like experience points in a game and less like a speculative security, *which will ensure that only actual users of Betoken will have Kairo.*
+* Instead of letting buyers purchase any amount of tokens they want, we will use a scheme that's more similar to getting a Netflix account: each person can purchase a Betoken manager account that's loaded with Kairos, and the amount of Kairo they initially have depends on how much they paid. There will be three price tiers: \$10, \$50, and \$100. Unlike a Netflix subscription, you only have to pay once in your account's lifetime. *This setup decreases whales' incentive to manipulate Kairo, and ensures that most managers will start on a level playing field.*
+* A referral program will be available, where anyone who refers others and anyone who is referred by someone else will get some bonus Kairo (ex. 5% of the new account's price). *This will help Betoken to acquire the critical amount of managers needed to display it's effectiveness.*
+
+#### 2.1.2 Continuous Distribution
+
+After the IAO, new manager accounts will still be created in the same fashion, except at a slightly higher price. This ensures that anyone, regardless of whether they participated in the IAO, will be able to join Betoken as a manager. In addition, the Kairo inflation caused by onboarding new managers can help decrease the amount of commission inactive managers receive, improving the effectiveness of Betoken's Incentivized Meritocracy.
 
 ### 2.2 Cycle Phases
 
@@ -164,60 +176,46 @@ In a preliminary setup, the lengths of each phase are as follows:
 
 Totaling 30 days.
 
-For the functions that transitions the fund to the next phase, the successful caller can get a reward in Kairo. (similar to Ethereum Alarm Clock)
+For the functions that transitions the fund to the next phase, the successful caller can get a reward in Kairo.
 
 ### 2.3 Token Exchange
 
 Betoken uses Kyber Network as the token exchange platform for executing all of its investments.
 
-KyberNetwork is "an on-chain protocol which allows instant exchange and conversion of digital assets (e.g. crypto tokens) and cryptocurrencies (e.g. Ether, Bitcoin, ZCash) with high liquidity."[[source](https://home.kyber.network/assets/KyberNetworkWhitepaper.pdf)] The inclusion of KyberNetwork can minimize the number of moving parts in Betoken's operation and significantly reduce Betoken's attack surface, reducing Betoken's running and maintenance costs and increasing its security.
+Kyber Network is "a decentralized liquidity network that anyone can tap into for a wide variety of inter-token use cases."[[source](https://kyber.network/about/company)] The inclusion of Kyber Network can minimize the number of moving parts in Betoken's operation and significantly reduce Betoken's attack surface, reducing Betoken's running and maintenance costs and increasing its security.
 
-### 2.5 Smart Contract Maintenance
+### 2.4 Governance
 
-#### 2.5.1 Upgrading Contracts
+In order to provide a simple user experience while maintaining a high decentralization level for the project, Betoken uses a unique governance system called **opt-out governance** to handle its smart contract upgrades.
 
-To upgrade the **BetokenFund** smart contract, the following steps will be taken:
+For each upgrade, there will be roughly four stages:
 
-1. The old contract is paused before the Waiting phase of the current cycle, and all users withdraws their investments.
-2. The new contract is deployed.
-3. The owner of the subcontracts (**ControlToken**, **ShareToken**) is set to the new contract.
-4. The upgrade is now complete.
+1. Decide whether or not an upgrade is needed
+2. Decide which upgrade to accept
+3. Investors withdraw funds if they don't like the upgrade
+4. Migrate to upgraded contract
 
-The script to do this can be found in Betoken's GitHub repository.
+There are three possible ways an upgrade may occur:
 
-#### 2.5.2 Handling Emergencies
+1. **Developer-initiated upgrade**: The developer of Betoken, who is specified by the existing smart contract, may unilaterally decide to initiate an upgrade. 
 
-The **BetokenFund** contract inherits the **Pausable** contract from OpenZeppelin, so that it is possible to pause the normal operation of the fund when an emergency occurs, such as an attack or a market black swan event. When paused, an emergency withdraw function will be able to be called by users to withdraw all funds.
+   During the Deposit & Withdraw phase of each cycle, the developer may decide to initiate an upgrade, and provide the new smart contract's address at the same time. The managers may review the new contract during the cycle's Make Decisions phase, after which investors may withdraw their funds if they don't approve of the upgrade. Given that the managers do not object, Betoken will migrate to the new smart contract after the next cycle's Deposit & Withdraw phase.
 
-One thing to note about the emergency withdraw function is that if the fund is paused when the fund is invested in tokens, things would get more complicated, since the tokens have to be sold before users can withdraw, and the amount they can withdraw would likely be different from the amount at the start of the cycle.
+2. **Manager-initiated upgrade**: The manager community may collectively decide to initiate an upgrade, without the need for the developer's approval.
 
-#### 2.5.3 Contract Administrator
+   During the Deposit & Withdraw phase of each cycle, the manager community may decide to initiate an upgrade via a simple majority vote using their Kairo. If the vote passed, then during the Make Decisions phase managers may use their Kairo to vote on which smart contract should be accepted as the new version. If any smart contract received a majority of votes (>50%), then it will be accepted as the new version, and after the unhappy investors withdraw their funds Betoken will migrate to the new contract. If no contract received a majority, then the upgrade will be aborted, and the fund will continue its operations normally.
 
-The **BetokenFund** contract inherits the **Ownable** contract from OpenZeppilin, and the owner is given administrator rights. Calling the emergency functions, pausing and unpausing, calling the functions related to upgrading, and changing the fund's fee rates all require administrator rights. Initially, the owner is set to be an account owned by the Betoken team, so that Betoken may be smoothly bootstrapped; after Betoken has enough community support, it is possible to set up a DAO (Decentralized Autonomous Organization) contract as the owner of Betoken, so that Betoken is completely decentralized.
+3. **Managers override developer's upgrade**: After the developer initiates an upgrade, if the manager community decides that the upgrade is bad/malicious, they may use a majority vote to either provide an alternative upgrade or keep the current contract.
 
-### 2.6 Governance
+   After the developer has started the upgrade process, during the Make Decisions phase managers may vote on an alternative smart contract to upgrade to in the same fashion as a manager-initiated upgrade. To keep the current contract, they can simply vote for the current contract. If any contract received a majority of votes, the developer's upgrade will be overridden, otherwise the developer's upgrade will proceed normally.
 
-As we mentioned in 2.5.3, the control over Betoken's smart contracts will initially be held by our team, until the Betoken community is large enough to sustain itself, after which a DAO will be set up as the contracts' owner. We are still considering different options for how the DAO will operate, and will list them out below.
+There are several advantages of using the opt-out governance system:
 
-#### 2.6.1 Votes
+1. Given that the developer behaves honestly, this system would have minimal disturbance on Betoken's normal operations. This ensures that Betoken's user experience, for both managers and investors, will be unaffected by smart contract upgrades, which is crucial for any consumer-facing product. 
 
-There are two options for what to use as votes in the DAO: one's Kairo balance and one's Betoken Shares balance. Both of them are viable, since the interests of Kairo holders and investors of the fund are all aligned with the interests of the entire fund. However, the two choices do have subtle differences.
+   If the developer behaves dishonestly, the community would be able to override the developer's decisions, and the investors can simply withdraw their funds if that fails, so the security of the system and of the funds would still be maximally guaranteed.
 
-##### 2.6.1.1 Reasons to Choose Kairo
-
-* Using Kairo as votes would add additional value to Kairo tokens, benefiting the Incentivized Meritocracy.
-* Kairo holders are likely more involved in the fund's operations than investors, which means they would know better about what's best for the fund, and would have a higher participation rate.
-
-##### 2.6.1.2 Reasons to Choose Betoken Shares
-
-* It makes sense to distribute power based on the stake one has in the fund. If someone has invested a lot in Betoken, they would expect to have a big say in administrative decisions.
-* More secure to attacks. Even though extremely unlikely, it is possible for an attacker to spread FUD (Fear, Uncertainty, Doubt) so well that the price of Kairo drops significantly, buy in tons of Kairo, and take over the fund. The same is more difficult to accomplish with Ether: if you cause a lot of people to withdraw everything from the fund, and then deposit a ton of Ether yourself, you would actually reassure investors that it's still safe and well to invest in Betoken, counteracting your attack.
-
-There is a third option where both Kairo and Betoken Shares are used as votes, which seems more reasonable than using either one individually, since both investors and managers will be represented in administrative decisions. This is the option we're considering to use.
-
-#### 2.6.2 Implementation
-
-We intend to use an established framework, such as Aragon, to implement the DAO.
+2. While the developer is important to the governance system, they are not required for updates to occur. This means Betoken does not need any centralized authority to function, which ensures Betoken's robustness against attacks on the developer.
 
 ## 3. Market Analysis
 
