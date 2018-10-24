@@ -89,11 +89,10 @@ While we do have a [formal proof](https://github.com/Betoken/documents/blob/mast
 
 #### 1.3.1 Better Than Direct Investment
 
-To be able to attract people with flair in investing, we must make participating in Betoken's investment process more lucrative than directly investing in the tokens oneself. Fortunately, it is easy to prove that the model satisfies this requirement (discounting the fluctuation of Kairo's price):
+To be able to attract people with flair in investing, we must make participating in Betoken's investment process more lucrative than directly investing in the tokens oneself. There are three main reasons why being a Betoken manager is more profitable:
 
-* $ROI_{Betoken} = ROI_{Direct Investment} + \frac{commission+ assetFee}{investmentAmount} \geqslant ROI_{DirectInvestment}$
-
-Therefore, managers are incentivized to join Betoken and make investment decisions.
+1. Being part of a large fund means you can manage, and profit from, more money than you otherwise would've been able/willing to invest yourself. It's similar to having a leverage.
+2. 
 
 #### 1.3.2 Analogous to Markets
 
@@ -162,17 +161,17 @@ After the IAO, new manager accounts will still be created in the same fashion, e
 
 ### 2.2 Cycle Phases
 
-Each cycle is divided into 3 phases:
+Each cycle is divided into 2 phases:
 
-* Deposit & Withdraw: When investors deposit and withdraw their funds.
-* Make Decisions: When managers stake Kairo to make investments for the fund.
-* Redeem Commission: When Kairo holders can redeem their commission. The Kairo smart contract is "paused" before the start of the next cycle (to prevent redeeming commission multiple times using the same tokens).
+* Intermission
+  * Deposit & Withdraw: Investors can deposit and withdraw their funds.
+  * Redeem Commission: Kairo holders can redeem their commission. The Kairo smart contract is "paused" before the start of the next cycle (to prevent redeeming commission multiple times using the same tokens).
+* Manage: When managers stake Kairo to make investments for the fund.
 
-In a preliminary setup, the lengths of each phase are as follows:
+The lengths of each phase are as follows:
 
-* Deposit & Withdraw: 1 day
-* Make Decisions: 28 days
-* Redeem Commission: 1 day
+* Intermission: 3 days
+* Make Decisions: 27 days
 
 Totaling 30 days.
 
@@ -199,21 +198,31 @@ There are three possible ways an upgrade may occur:
 
 1. **Developer-initiated upgrade**: The developer of Betoken, who is specified by the existing smart contract, may unilaterally decide to initiate an upgrade. 
 
-   During the Deposit & Withdraw phase of each cycle, the developer may decide to initiate an upgrade, and provide the new smart contract's address at the same time. The managers may review the new contract during the cycle's Make Decisions phase, after which investors may withdraw their funds if they don't approve of the upgrade. Given that the managers do not object, Betoken will migrate to the new smart contract after the next cycle's Deposit & Withdraw phase.
+   During the Intermission phase of each cycle, the developer may decide to initiate an upgrade, and provide the new smart contract's address at the same time. The managers may review the new contract during the cycle's Manage phase, after which investors may withdraw their funds if they don't approve of the upgrade. Given that the managers do not object, Betoken will migrate to the new smart contract after the next cycle's Intermission phase.
 
 2. **Manager-initiated upgrade**: The manager community may collectively decide to initiate an upgrade, without the need for the developer's approval.
 
-   During the Deposit & Withdraw phase of each cycle, the manager community may decide to initiate an upgrade via a simple majority vote using their Kairo. If the vote passed, then during the Make Decisions phase managers may use their Kairo to vote on which smart contract should be accepted as the new version. If any smart contract received a majority of votes (>50%), then it will be accepted as the new version, and after the unhappy investors withdraw their funds Betoken will migrate to the new contract. If no contract received a majority, then the upgrade will be aborted, and the fund will continue its operations normally.
+   (Note: the quorum for all votes mentioned below is 10%)
 
-3. **Managers override developer's upgrade**: After the developer initiates an upgrade, if the manager community decides that the upgrade is bad/malicious, they may use a majority vote to either provide an alternative upgrade or keep the current contract.
+   During the Intermission phase of each cycle, the manager community may decide to initiate an upgrade via a simple majority vote using their Kairo. If the vote passed, then during the Manage phase managers may use their Kairo to vote on which smart contract should be accepted as the new version.
 
-   After the developer has started the upgrade process, during the Make Decisions phase managers may vote on an alternative smart contract to upgrade to in the same fashion as a manager-initiated upgrade. To keep the current contract, they can simply vote for the current contract. If any contract received a majority of votes, the developer's upgrade will be overridden, otherwise the developer's upgrade will proceed normally.
+   When voting for the upgrade target, the 27-day Manage phase is divided into nine 3-day chunks. In the first chunk, on the first day, the manager with the most Kairo (among managers who want to propose upgrades) decides the candidate to vote on. During the remaining two days, managers other than the candidate's proposer may use Kairo to vote on whether or not to accept this candidate as the upgrade target.
+
+   * If a super-majority (>75%) voted yes, then the candidate is accepted as the upgrade target. No further voting is needed.
+   * If <=75% voted yes or the quorum was not reached, then we repeat the same process in the next chunk, where the manager with the most Kairo, excluding previous proposers, gets to propose the candidate.
+   * Proposers may not participate in the current and future votes.
+
+   * If no vote has passed after 6 votes (18 days), the upgrade is aborted. The last 3 chunks (9 days) are reserved for reviewing the upgrade target's code in the case where the 6th vote was successful.
+
+   After the unhappy investors withdraw their funds, Betoken will migrate to the new contract.
+
+3. **Managers override developer's upgrade**: After the developer initiates an upgrade, if the manager community decides that the upgrade is bad/malicious, they may override the developer's decision by proceeding with the manager-initiated upgrade process during the Manage phase. If the managers decided on an upgrade target after the Manage phase, then that target will be used. If not, then the developer's upgrade will continue normally.
 
 There are several advantages of using the opt-out governance system:
 
 1. Given that the developer behaves honestly, this system would have minimal disturbance on Betoken's normal operations. This ensures that Betoken's user experience, for both managers and investors, will be unaffected by smart contract upgrades, which is crucial for any consumer-facing product. 
 
-   If the developer behaves dishonestly, the community would be able to override the developer's decisions, and the investors can simply withdraw their funds if that fails, so the security of the system and of the funds would still be maximally guaranteed.
+   If the developer behaves dishonestly/maliciously, the community would be able to override the developer's decisions, and the investors can simply withdraw their funds if even that fails, so the security of the system and of the funds would still be maximally guaranteed.
 
 2. While the developer is important to the governance system, they are not required for updates to occur. This means Betoken does not need any centralized authority to function, which ensures Betoken's robustness against attacks on the developer.
 
