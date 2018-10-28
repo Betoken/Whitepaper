@@ -91,8 +91,13 @@ While we do have a [formal proof](https://github.com/Betoken/documents/blob/mast
 
 To be able to attract people with flair in investing, we must make participating in Betoken's investment process more lucrative than directly investing in the tokens oneself. There are two main reasons why being a Betoken manager is more profitable:
 
+<<<<<<< HEAD
 1. **Leverage:** Being part of a large fund means you can manage, and profit from, more money than you otherwise would've been able/willing to invest yourself. It's similar to having a leverage.
 2. **Less risk:** Since managers are paid commissions even if the fund did not profit, they are subject to less risk and can ensure a minimum income.
+=======
+1. Being part of a large fund means you can manage, and profit from, more money than you otherwise would've been able/willing to invest yourself. It's similar to having a leverage.
+2.
+>>>>>>> 94136ddb69544258a77d9f183659a582cfda57f1
 
 #### 1.3.2 Analogous to Markets
 
