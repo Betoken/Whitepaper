@@ -152,7 +152,7 @@ Supporting cross-chain crypto-asset investment will be a major opportunity for B
 
 #### 2.1.1 Initial Distribution
 
-We plan to use what we call **Initial Account Offering (IAO)** to handle Kairo's initial distribution. 
+We plan to use what we call **Initial Account Offering (IAO)** to handle Kairo's initial distribution.
 
 Betoken's IAO has the following properties:
 
@@ -176,7 +176,7 @@ Each cycle is divided into 2 phases:
 The lengths of each phase are as follows:
 
 * Intermission: 3 days
-* Make Decisions: 27 days
+* Manage: 27 days
 
 Totaling 30 days.
 
@@ -201,7 +201,7 @@ For each upgrade, there will be roughly four stages:
 
 There are three possible ways an upgrade may occur:
 
-1. **Developer-initiated upgrade**: The developer of Betoken, who is specified by the existing smart contract, may unilaterally decide to initiate an upgrade. 
+1. **Developer-initiated upgrade**: The developer of Betoken, who is specified by the existing smart contract, may unilaterally decide to initiate an upgrade.
 
    During the Intermission phase of each cycle, the developer may decide to initiate an upgrade, and provide the new smart contract's address at the same time. The managers may review the new contract during the cycle's Manage phase, after which investors may withdraw their funds if they don't approve of the upgrade. Given that the managers do not object, Betoken will migrate to the new smart contract after the next cycle's Intermission phase.
 
@@ -225,7 +225,7 @@ There are three possible ways an upgrade may occur:
 
 There are several advantages of using the opt-out governance system:
 
-1. Given that the developer behaves honestly, this system would have minimal disturbance on Betoken's normal operations. This ensures that Betoken's user experience, for both managers and investors, will be unaffected by smart contract upgrades, which is crucial for any consumer-facing product. 
+1. Given that the developer behaves honestly, this system would have minimal disturbance on Betoken's normal operations. This ensures that Betoken's user experience, for both managers and investors, will be unaffected by smart contract upgrades, which is crucial for any consumer-facing product.
 
    If the developer behaves dishonestly/maliciously, the community would be able to override the developer's decisions, and the investors can simply withdraw their funds if even that fails, so the security of the system and of the funds would still be maximally guaranteed.
 
@@ -320,20 +320,20 @@ There is evidence that quants and data scientists are interested in participatin
  - Internal contract audit and testing
  - Incentive model analysis and adjustments
 
-### Jul - Aug 2018 
+### Jul - Aug 2018
 
 - Legal consulting
 - Community outreach
 - Frontend development
 - Testnet Beta
 
-### Sep - Dec 2018 
+### Sep - Dec 2018
 
 - Token sale
 - Smart contract audits
 - Mainnet Pilot
 
-### Q1 2019 
+### Q1 2019
 
 - Official release
 
@@ -342,7 +342,7 @@ There is evidence that quants and data scientists are interested in participatin
 - Tax & legal tools
 - Python API to support Machine Learning agents
 
-### Q3 2019 
+### Q3 2019
 
 - Pro UI with more features and customizability
 - More API support
