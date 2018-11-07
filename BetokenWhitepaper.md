@@ -165,7 +165,7 @@ Each cycle is divided into 2 phases:
 
 * Intermission
   * Deposit & Withdraw: Investors can deposit and withdraw their funds.
-  * Redeem Commission: Kairo holders can redeem their commission. The Kairo smart contract is "paused" before the start of the next cycle (to prevent redeeming commission multiple times using the same tokens).
+  * Redeem Commission: Kairo holders can redeem their commission.
 * Manage: When managers stake Kairo to make investments for the fund.
 
 The lengths of each phase are as follows:
