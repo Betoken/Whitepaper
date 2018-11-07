@@ -441,4 +441,4 @@ GuillaumeはBetokenの共同設立者です。
 
 
 # 6.謝辞
-このペーパーの以前のバージョンに対するフィードバックについては、友人、Surya Krishnan、AngéliqueRebardel、Maxime Ruizに感謝します。
+このペーパーの以前のバージョンに対するフィードバックについては、友人、Surya Krishnan、Angélique Rebardel、Maxime Ruizに感謝します。
