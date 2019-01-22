@@ -348,10 +348,6 @@ There is evidence that quants and data scientists are interested in participatin
 
 Zefram is the cofounder and lead developer of Betoken. He currently studies Computer Science at UC San Diego. He is passionate about crypto-economics and mechanism design.
 
-#### Surya Krishnan
-
-Surya is the cofounder and frontend developer of Betoken. Currently, he studies computer science at UC San Diego and Surya's goal is to build technology that enables people to realize their ideas.
-
 #### Guillaume Palayer
 
 Guillaume is the cofounder of Betoken. His mission is to design and code the front end experience of the dApp. He's also an user researcher passionate by the token economy and the decentralized Web.
