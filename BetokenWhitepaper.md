@@ -65,19 +65,21 @@ We provide below a description of how Betoken functions and details of Betoken's
 
 ---
 
-The Betoken fund runs in investment cycles, and at the start of each cycle there is a period of time where investors can deposit & withdraw their funds. When a user deposits $X$ Ether, they are given some amount of *Betoken Shares*, a custom ERC20 token, the amount of which is determined by the following equation:
+The Betoken fund runs in investment cycles, and at the start of each cycle there is a period of time where investors can deposit & withdraw their funds. When a user deposits $X​$ Ether, they are given some amount of *Betoken Shares*, a custom ERC20 token, the amount of which is determined by the following equation:
 
-* $shares = \frac{X}{totalFunds} \times totalShareSupply$
-
-When they withdraw $X$ Ether, they have to burn some of their shares, the amount of which is determined by the same equation. During the first cycle, when there's no money in the fund, we simply use:
-
-* $shares = constant \times X$
-
+$$
+shares = \frac{X}{totalFunds} \times totalShareSupply
+$$
+When they withdraw $X​$ Ether, they have to burn some of their shares, the amount of which is determined by the same equation. During the first cycle, when there's no money in the fund, we simply use:
+$$
+shares = constant \times X
+$$
 After the deposit & withdraw period, managers can start making investment decisions for the fund by staking some Kairos — the name we use for control tokens. Decisions are immediately turned into actual investments using the equation
 
-- $investmentAmount = totalFunds \times \frac{decisionStake}{totalKairoSupply}$
-
-During the decision-making phase, managers can also sell any asset they invested in whenever they want at the current market price. After an asset has been sold, the fund's smart contract automatically determines how profitable the investment was and rewards/takes away Kairo based on the results. The amount of Kairos a user gets back after selling an asset is $stake \times (1 + ROI)$, so if one of your investments had a 20% ROI, you would get 20% more Kairos back.
+$$
+investmentAmount = totalFunds \times \frac{decisionStake}{totalKairoSupply}
+$$
+During the decision-making phase, managers can also sell any asset they invested in whenever they want at the current market price. After an asset has been sold, the fund's smart contract automatically determines how profitable the investment was and rewards/takes away Kairo based on the results. The amount of Kairos a user gets back after selling an asset is $stake \times (1 + ROI)​$, so if one of your investments had a 20% ROI, you would get 20% more Kairos back.
 
 All investments should be sold before the end of the decision-making phase, or one's staked Kairos would be lost.
 
@@ -225,6 +227,26 @@ There are several advantages of using the opt-out governance system:
    If the developer behaves dishonestly/maliciously, the community would be able to override the developer's decisions, and the investors can simply withdraw their funds if even that fails, so the security of the system and of the funds would still be maximally guaranteed.
 
 2. While the developer is important to the governance system, they are not required for updates to occur. This means Betoken does not need any centralized authority to function, which ensures Betoken's robustness against attacks on the developer.
+
+### 2.5 Risk Threshold
+
+While Betoken's Incentivized Meritocracy can already deal with managers who don't make any investments but still redeem their commissions every month (AKA freeloaders), it does so too slowly to disincentivize managers from freeloading. Thus, we have introduced a mechanism we call Risk Threshold to better handle freeloaders.
+
+The Risk Threshold mechanism measures the amount of risk each manager has taken in a cycle, and only gives them the full commission amount if the risk they've taken exceeds a certain threshold. We measure the risk a manager has taken using the formula:
+$$
+Risk = \sum_{i\in Investments} Duration(i) \times Stake(i)
+$$
+And the threshold we have chosen for each manager is:
+$$
+Threshold = KairoBalanceAtCycleStart \times (3 \text{ days})
+$$
+The proportion of the full commission that each manager will receive is:
+$$
+min(1, \frac{Risk}{Threshold})
+$$
+To illustrate this mechanism in an example, say at the beginning of a cycle Alice has 100 Kairo and Bob has 10 Kairo. Alice stakes 50 Kairo in an investment for 7 days, Bob stakes 1 Kairo in an investment for 15 days and 2 Kairo in another investment for 5 days. The risk Alice has taken is $50\times7=350$, and her risk threshold is $100 \times 3 = 300$, so she will receive the full commission amount. The risk Bob has taken is $1 \times 15 + 2 \times 5 = 25$, and his risk threshold is $10 \times 3 = 30$, so he has not exceeded the risk threshold, and will receive $\frac{25}{30} = 83.33\%$ of the full commission amount.
+
+The commission penalty each manager receives is put into the commission pool of the next cycle.
 
 ## 3. Market Analysis
 
