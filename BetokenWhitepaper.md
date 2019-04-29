@@ -65,7 +65,7 @@ We provide below a description of how Betoken functions and details of Betoken's
 
 ---
 
-The Betoken fund runs in investment cycles, and at the start of each cycle there is a period of time where investors can deposit & withdraw their funds. When a user deposits $X​$ Ether, they are given some amount of *Betoken Shares*, a custom ERC20 token, the amount of which is determined by the following equation:
+The Betoken fund runs in investment cycles, and at the start of each cycle there is a period of time where investors can deposit & withdraw their funds: the Intermission phase. When a user deposits $X$ Ether, they are given some amount of *Betoken Shares*, a custom ERC20 token, the amount of which is determined by the following equation:
 
 $$
 shares = \frac{X}{totalFunds} \times totalShareSupply
@@ -74,16 +74,16 @@ When they withdraw $X​$ Ether, they have to burn some of their shares, the amo
 $$
 shares = constant \times X
 $$
-After the deposit & withdraw period, managers can start making investment decisions for the fund by staking some Kairos — the name we use for control tokens. Decisions are immediately turned into actual investments using the equation
+After the Intermission phase, managers can start making investment decisions for the fund by staking some Kairos — the name we use for control tokens. Decisions are immediately turned into actual investments using the equation
 
 $$
 investmentAmount = totalFunds \times \frac{decisionStake}{totalKairoSupply}
 $$
-During the decision-making phase, managers can also sell any asset they invested in whenever they want at the current market price. After an asset has been sold, the fund's smart contract automatically determines how profitable the investment was and rewards/takes away Kairo based on the results. The amount of Kairos a user gets back after selling an asset is $stake \times (1 + ROI)​$, so if one of your investments had a 20% ROI, you would get 20% more Kairos back.
+During the Manage phase, managers can also sell any asset they invested in whenever they want at the current market price. After an asset has been sold, the fund's smart contract automatically determines how profitable the investment was and rewards/takes away Kairo based on the results. The amount of Kairos a user gets back after selling an asset is $stake \times (1 + ROI)$, so if one of your investments had a 20% ROI, you would get 20% more Kairos back.
 
 All investments should be sold before the end of the decision-making phase, or one's staked Kairos would be lost.
 
-After the decision-making phase is over, a certain proportion (20%) of total profits is set aside as commission and distributed among Kairo holders proportional to the amount they hold. A certain proportion of fund assets (0.1%) is also set aside and distributed among Kairo holders, and another 0.1% is paid to Betoken's developers to fund future support. In addition, an exit fee (3%) is charged whenever one withdraws funds, which is given to the developers.
+After the Manage phase is over, a certain proportion (20%) of total profits is set aside as commission and distributed among Kairo holders proportional to the amount they hold. A certain proportion of fund assets (0.1%) is also set aside and distributed among Kairo holders.
 
 ### 1.3 Additional Reasons of Why Betoken Will be Successful
 
@@ -185,6 +185,8 @@ Betoken uses Kyber Network as the token exchange platform for executing all of i
 
 Kyber Network is "a decentralized liquidity network that anyone can tap into for a wide variety of inter-token use cases."[[source](https://kyber.network/about/company)] The inclusion of Kyber Network can minimize the number of moving parts in Betoken's operation and significantly reduce Betoken's attack surface, reducing Betoken's running and maintenance costs and increasing its security.
 
+Betoken uses [Compound Finance](https://compound.finance/) and [Fulcrum](https://fulcrum.trade/) as the margin trading platforms for executing leveraged long & short trades.
+
 ### 2.4 Governance
 
 In order to provide a simple user experience while maintaining a high decentralization level for the project, Betoken uses a unique governance system called **opt-out governance** to handle its smart contract upgrades.
@@ -247,6 +249,19 @@ $$
 To illustrate this mechanism in an example, say at the beginning of a cycle Alice has 100 Kairo and Bob has 10 Kairo. Alice stakes 50 Kairo in an investment for 7 days, Bob stakes 1 Kairo in an investment for 15 days and 2 Kairo in another investment for 5 days. The risk Alice has taken is $50\times7=350$, and her risk threshold is $100 \times 3 = 300$, so she will receive the full commission amount. The risk Bob has taken is $1 \times 15 + 2 \times 5 = 25$, and his risk threshold is $10 \times 3 = 30$, so he has not exceeded the risk threshold, and will receive $\frac{25}{30} = 83.33\%$ of the full commission amount.
 
 The commission penalty each manager receives is put into the commission pool of the next cycle.
+
+### 2.6 Purging "Dead" Managers
+
+As the bottom line for manager participation rate, managers who have been inactive for 6 cycles or above will lose their entire Kairo balance. Inactivity is defined as not making any investments or margin trades.
+
+This measure is meant to solve two problems:
+
+1. If a manager joined Betoken with a relatively low initial Kairo balance, it's likely that they will lose interest and abandon their account, since they didn't put in much money to begin with. However, the stale Kairo owned by their account still represents control over some portion of the fund assets. This means that as the number of inactive managers rises, a nonnegligible portion of the investors' capital will simply sit in the fund, not being invested in anything, which would negatively impact the efficiency of Betoken.
+2. If a prominent manager with a large amount of Kairo unfortunately passes away, and they made no arrangements to pass on their manager account to someone else, the capital under their management will never be invested in anything, which may greatly reduce the efficiency of Betoken.
+
+### 2.7 Inflation Funding for Development
+
+In order to providing funding for its maintenance and future development, Betoken will mint Betoken Shares and send them to the current development team. The amount will be equal to 0.1% of the current Betoken Shares total supply, and it will occur at the end of every cycle.
 
 ## 3. Market Analysis
 
