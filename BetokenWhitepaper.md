@@ -70,7 +70,7 @@ The Betoken fund runs in investment cycles, and at the start of each cycle there
 $$
 shares = \frac{X}{totalFunds} \times totalShareSupply
 $$
-When they withdraw $X​$ Ether, they have to burn some of their shares, the amount of which is determined by the same equation. During the first cycle, when there's no money in the fund, we simply use:
+When they withdraw $X$ Ether, they have to burn some of their shares, the amount of which is determined by the same equation. During the first cycle, when there's no money in the fund, we simply use:
 $$
 shares = constant \times X
 $$
@@ -159,7 +159,24 @@ Betoken's IAO has the following properties:
 
 #### 2.1.2 Continuous Distribution
 
-After the IAO, new manager accounts will still be created in the same fashion, except at a slightly higher price. This ensures that anyone, regardless of whether they participated in the IAO, will be able to join Betoken as a manager. In addition, the Kairo inflation caused by onboarding new managers can help decrease the amount of commission inactive managers receive, improving the effectiveness of Betoken's Incentivized Meritocracy.
+After the IAO, new manager accounts will still be created in the same fashion. However, the price will become dynamic, determined by the following formula:
+$$
+kairoPrice = max(\frac{totalFunds}{totalKairoSupply}, 2.5)
+$$
+where the unit is $DAI/KRO$. The maximum amount of Kairo a new manager can have will also become dynamic, determined by the following formula:
+$$
+maxKairoPurchase = totalKairoSupply \times 1\%
+$$
+The funds paid by new managers will be distributed in the following way:
+
+* During the Intermission phase, the funds will be sent to the development team's account as project funding.
+* During the Manage phase, the funds will be distributed among the investors on a pro rata basis.
+
+The reason for not giving the proceeds in the Intermission phase to the investors as well is to prevent the following type of attack. An attacker could deposit a large amount into the Betoken fund at the beginning of the Intermission phase, withdraw it near the end of the Intermission phase, and steal a large portion of the proceeds from new managers. The stolen amount can be calculated using the following formula (assuming only the attacker is depositing):
+$$
+stolenAmount = \frac{attackerDeposit}{totalFunds + attackerDeposit}\times newManagerProceeds
+$$
+Compared to giving the proceeds to some attacker, we've decided it's better to give it to the development team as additional funding.
 
 ### 2.2 Cycle Phases
 
@@ -202,7 +219,7 @@ There are three possible ways an upgrade may occur:
 
 1. **Developer-initiated upgrade**: The developer of Betoken, who is specified by the existing smart contract, may unilaterally decide to initiate an upgrade.
 
-   During the Intermission phase of each cycle, the developer may decide to initiate an upgrade, and provide the new smart contract's address at the same time. The managers may review the new contract during the cycle's Manage phase, after which investors may withdraw their funds if they don't approve of the upgrade. Given that the managers do not object, Betoken will migrate to the new smart contract after the next cycle's Intermission phase.
+   During the Intermission phase of each cycle, the developer may decide to initiate an upgrade, and provide the new smart contract's address at the same time. The managers may review the new contract during the cycle's Manage phase, after which investors may withdraw their funds if they don't approve of the upgrade. Given that the managers do not object, Betoken will migrate to the new smart contract after the next cycle's Intermission phase has ended.
 
 2. **Manager-initiated upgrade**: The manager community may collectively decide to initiate an upgrade, without the need for the developer's approval.
 
@@ -210,13 +227,13 @@ There are three possible ways an upgrade may occur:
 
    During the Intermission phase of each cycle, the manager community may decide to initiate an upgrade via a simple majority vote using their Kairo. If the vote passed, then during the Manage phase managers may use their Kairo to vote on which smart contract should be accepted as the new version.
 
-   When voting for the upgrade target, the 27-day Manage phase is divided into nine 3-day chunks. In the first chunk, on the first day, the manager with the most Kairo (among managers who want to propose upgrades) decides the candidate to vote on. During the remaining two days, managers other than the candidate's proposer may use Kairo to vote on whether or not to accept this candidate as the upgrade target.
+   When voting for the upgrade target, the 27-day Manage phase is divided into nine 3-day chunks. The first chunk is reserved for letting the news of the upgrade spread sufficiently. In the second chunk, on the first day, the manager with the most Kairo (among managers who want to propose upgrades) proposes the candidate smart contract to vote on. During the remaining two days, managers other than the candidate's proposer may use Kairo to vote on whether or not to accept this candidate as the upgrade target.
 
    * If a super-majority (>75%) voted yes, then the candidate is accepted as the upgrade target. No further voting is needed.
    * If <=75% voted yes or the quorum was not reached, then we repeat the same process in the next chunk, where the manager with the most Kairo, excluding previous proposers, gets to propose the candidate.
    * Proposers may not participate in the current and future votes.
 
-   * If no vote has passed after 6 votes (18 days), the upgrade is aborted. The last 3 chunks (9 days) are reserved for reviewing the upgrade target's code in the case where the 6th vote was successful.
+   * If no vote has passed after 5 votes (15 days), the upgrade is aborted. The last 3 chunks (9 days) are reserved for reviewing the upgrade target's code in the case where the 5th vote was successful.
 
    After the unhappy investors withdraw their funds, Betoken will migrate to the new contract.
 
