@@ -269,7 +269,7 @@ The commission penalty each manager receives is put into the commission pool of 
 
 ### 2.6 Purging "Dead" Managers
 
-As the bottom line for manager participation rate, managers who have been inactive for 6 cycles or above will lose their entire Kairo balance. Inactivity is defined as not making any investments or margin trades.
+As the bottom line for manager is participation rate, managers who have been inactive for 6 cycles or above will lose their entire Kairo balance. Inactivity is defined as not making any investments or margin trades.
 
 This measure is meant to solve two problems:
 
